@@ -57,18 +57,28 @@ namespace dtp15_todolist
         public static void ReadListFromFile()
         {
             string todoFileName = "todo.lis";
-            Console.Write($"- Loading file \"/{todoFileName}\".");
-            StreamReader sr = new StreamReader(todoFileName);
-            int numRead = 0;
-            string line;
-            while ((line = sr.ReadLine()) != null)
+            if (File.Exists(todoFileName))
             {
-                TodoItem item = new TodoItem(line);
-                list.Add(item);
-                numRead++;
+                Console.WriteLine($". Loading file \"/{todoFileName}\".");
+                StreamReader sr = new StreamReader(todoFileName);
+                int numRead = 0;
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    TodoItem item = new TodoItem(line);
+                    list.Add(item);
+                    numRead++;
+                }
+                sr.Close();
+                Console.WriteLine($". \"{numRead}\" tasks successfully loaded.\r\n");
             }
-            sr.Close();
-            Console.WriteLine($"- {numRead} lines successfully loaded.\r\n");
+            else
+            {
+                Console.WriteLine($". No file \"{todoFileName}\" found, press any key to create file.");
+                Console.ReadKey(true);
+                File.Create(todoFileName);
+                Console.WriteLine($". File \"{todoFileName}\" successfully created!\r\n");
+            }
         }
         private static void PrintHeadOrFoot(bool head, bool verbose)
         {

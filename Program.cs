@@ -12,15 +12,15 @@
         public static void Main(string[] args)
         {
             Console.WriteLine("................TO-DO LIST................\r\n");
-            //Todo.ReadListFromFile();
-            Todo.PrintHelp();
+            Todo.ReadListFromFile();
+            PrintHelp();
             string command;
             do
             {
                 command = MyIO.ReadCommand("> ");
                 if (MyIO.Equals(command, "help"))
                 {
-                    Todo.PrintHelp();
+                    PrintHelp();
                 }
                 else if (MyIO.Equals(command, "list"))
                 {

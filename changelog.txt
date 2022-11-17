@@ -15,6 +15,7 @@
 		.
 	-ToDo.cs:
 		.Moved "PrintHelp" method to Program class.
+		.Reworked "ReadListFromFile" method, added file check and file creation.
 
 -To-Do's.
 	-General:
@@ -27,3 +28,4 @@
 		.
 	-ToDo.cs:
 [NYI]	.Move "PrintHelp" method to Program class. (READY)
+[NYI]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
