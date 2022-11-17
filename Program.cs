@@ -87,38 +87,43 @@ namespace dtp15_todolist
             Console.WriteLine("................TO-DO LIST................\r\n");
             Todo.ReadListFromFile();
             PrintHelp();
-            string command;
+            string[] commandLines;
             do
             {
-                command = MyIO.ReadCommand("> ");
-                if (MyIO.Equals(command, "help"))
+                commandLines = MyIO.ReadCommands("> ");
+                if (MyIO.Contains(commandLines, "help"))
                 {
                     PrintHelp();
                 }
-                else if (MyIO.Equals(command, "list"))
+                else if (MyIO.Contains(commandLines, "list"))
                 {
-                    if (MyIO.HasArgument(command, "all"))
-                        Todo.PrintTodoList(verbose: true);
-                    else
-                        Todo.PrintTodoList(verbose: false);
+                    //if (MyIO.HasArgument(command[1], "all"))
+                    //    Todo.PrintTodoList(verbose: true);
+                    //else
+                    //    Todo.PrintTodoList(verbose: false);
+                    Todo.PrintTodoList(verbose: true);
                 }
-                else if (MyIO.Equals(command, "new"))
+                else if (MyIO.Contains(commandLines, "new"))
                 {
-                    AddNewTask();
+                    if (commandLines.Length > 1) { AddNewTask(commandLines[1]); }
+                    else AddNewTask();
                 }
-                else if (MyIO.Equals(command, "save"))
+                else if (MyIO.Contains(commandLines, "save"))
                 {
                     Todo.SaveListToFile();
                 }
-                else if (MyIO.Equals(command, "quit"))
+                else if (MyIO.Contains(commandLines, "quit"))
                 {
                     Todo.SaveListToFile();
-                    Console.WriteLine(". Thank you for using To-Do List!\r\n. Press any key to shutdown application.");
+                    Console.WriteLine("\r\n. Thank you for using To-Do List!\r\n. Press any key to shutdown application.");
+                    Console.ReadKey(true);
                     break;
                 }
                 else
                 {
-                    Console.WriteLine($"Unknown command: {command}");
+                    string commandString = "";
+                    foreach (string command in commandLines) commandString += command + " ";
+                    Console.WriteLine($"Unknown command: {commandString}");
                 }
             }
             while (true);
