@@ -51,7 +51,7 @@ namespace dtp15_todolist
                 {
                     string taskLine = $"{newTaskStatus}|{newTaskPriority}|{newTaskName.Trim()}|{newTaskDescription.Trim()}";
                     Todo.TodoItem newTask = new Todo.TodoItem(taskLine);
-                    Todo.list.Add(newTask);
+                    Todo.todoList.Add(newTask);
                     Console.WriteLine($". New task \"{newTaskName}\" successfully added to list!\r\n. To change task status, use command \"status\".");
                 }
                 else if (keyPressed.Key == ConsoleKey.Backspace) goto setTask;
@@ -68,8 +68,9 @@ namespace dtp15_todolist
         {
             Console.WriteLine(".................COMMANDS.................\r\n");
             Console.WriteLine($"- {"help", -30}List all commands.");
-            Console.WriteLine($"- {"list...    +/-description", -30}List all active tasks in to-do list, with or without description.");
-            Console.WriteLine($"  {"    ...all +/-description", -30}List all tasks in to-do list, with or without description.");
+            Console.WriteLine($"- {"list...    (+/-)d", -30}List all active tasks in to-do list, with or without description.");
+            Console.WriteLine($"  {"    ...all (+/-)d", -30}List all tasks in to-do list, with or without description.");
+            Console.WriteLine($"  {"    ...help",-30}Shows possible \"list\" commands.");
             Console.WriteLine($"- {"new...", -30}Add new task to to-do list.");
             Console.WriteLine($"  {"   ...\"task name\"", -30}Add new task to to-do list, and initialize with a task name.");
             Console.WriteLine($"- {"save", -30}Saves current to-do list to \"/todo.lis\".");
@@ -98,9 +99,23 @@ namespace dtp15_todolist
                 else if (MyIO.CheckFirstCommand(commandLines, "list"))
                 {
                     if (MyIO.CheckAdditionalCommands(commandLines, "all"))
-                        Todo.PrintTodoList(verbose: true);
+                    {
+                        if (MyIO.CheckAdditionalCommands(commandLines, "+d")) Todo.PrintTodoList(allTasks: true, verbose: true);
+                        else Todo.PrintTodoList(allTasks: true, verbose: false);
+                    }
+                    else if (MyIO.CheckAdditionalCommands(commandLines, "help"))
+                    {
+                        Console.WriteLine(". Possible \"list\" commands...");
+                        Console.WriteLine($"- {"list",-20}Shows all active tasks without description.");
+                        Console.WriteLine($"- {"list +d",-20}Shows all active tasks with description.");
+                        Console.WriteLine($"- {"list all",-20}Shows all tasks without description.");
+                        Console.WriteLine($"- {"list all +d",-20}Shows all tasks with description.");
+                    }
                     else
-                        Todo.PrintTodoList(verbose: false);
+                    {
+                        if (MyIO.CheckAdditionalCommands(commandLines, "+d")) Todo.PrintTodoList(allTasks: false, verbose: true);
+                        else Todo.PrintTodoList(allTasks: false, verbose: false);
+                    }
                 }
                 else if (MyIO.CheckFirstCommand(commandLines, "new"))
                 {
