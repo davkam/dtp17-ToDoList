@@ -10,12 +10,17 @@
 		.Changed console output & input language to English, and changed console UI.
 		.Separated classes into separate class files.
 	-Program.cs:
-		.
+		.Added "new" task command function to program.
+		.Added new static method "AddNewTask" for new task creation.
+		.Added new "save" command function to program.
+		.Updated "quit" command fucntion to save file before shutdown.
+		.Added "AppRestart" static method to program.
 	-MyIO.cs:
 		.
 	-ToDo.cs:
 		.Moved "PrintHelp" method to Program class.
 		.Reworked "ReadListFromFile" method, added file check and file creation.
+		.Added new "SaveListToFile" static method.
 
 -To-Do's.
 	-General:
@@ -23,9 +28,19 @@
 [TBD]	.Separate all classes into separate files. (READY)
 [NYI]	.Add descriptive summaries to classes and methods with doxygen. (WAITING)
 	-Program.cs
-		.
+[NYI]	.Add "new" task command function to program. (READY)
+[NYI]	.Add new static method for new task creation. (READY)
+[NYI]	.Add "list description" command function to program. (WAITING)
+[TBD]	.Change "list" command function to only show active tasks. (WAITING)
+[TBD]	.Change "list all" command function to show all tasks. (WAITING)
+[NYI]	.Add "save" command function to program. (READY)
+[TBD]	.Update "quit" command function to save file before shutdown. (READY)
+[NYI]	.Add "load" command function to program. (WAITING)
+[NYI]	.Add set task status command function to program. (WAITING)
+[NYI]	.Add "AppRestart" static method to program. (READY)
 	-MyIO.cs:
 		.
 	-ToDo.cs:
-[NYI]	.Move "PrintHelp" method to Program class. (READY)
-[NYI]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
+[TBD]	.Move "PrintHelp" method to Program class. (READY)
+[TBD]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
+[NYI]	.Add "SaveListToFile" method. (READY)
