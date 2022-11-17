@@ -8,36 +8,36 @@ namespace dtp15_todolist
 {
     public class Todo
     {
-        public static List<TodoItem> list = new List<TodoItem>();
+        public static List<TodoItem> todoList = new List<TodoItem>();
 
         public const int Active = 1;
         public const int Waiting = 2;
         public const int Ready = 3;
         public class TodoItem
         {
-            public int status;
-            public int priority;
-            public string task;
+            public int taskStatus;
+            public int taskPriority;
+            public string taskName;
             public string taskDescription;
             public TodoItem(int priority, string task)
             {
-                this.status = Active;
-                this.priority = priority;
-                this.task = task;
+                this.taskStatus = Active;
+                this.taskPriority = priority;
+                this.taskName = task;
                 this.taskDescription = "";
             }
             public TodoItem(string todoLine)
             {
                 string[] field = todoLine.Split('|');
-                status = Int32.Parse(field[0]);
-                priority = Int32.Parse(field[1]);
-                task = field[2];
+                taskStatus = Int32.Parse(field[0]);
+                taskPriority = Int32.Parse(field[1]);
+                taskName = field[2];
                 taskDescription = field[3];
             }
             public void Print(bool verbose = false)
             {
-                string statusString = StatusToString(status);
-                Console.Write($"|{statusString,-12}|{priority,-6}|{task,-20}|");
+                string statusString = StatusToString(taskStatus);
+                Console.Write($"|{statusString,-12}|{taskPriority,-6}|{taskName,-20}|");
                 if (verbose)
                     Console.WriteLine($"{taskDescription,-40}|");
                 else
@@ -66,7 +66,7 @@ namespace dtp15_todolist
                 while ((line = sr.ReadLine()) != null)
                 {
                     TodoItem item = new TodoItem(line);
-                    list.Add(item);
+                    todoList.Add(item);
                     numRead++;
                 }
                 sr.Close();
@@ -84,15 +84,15 @@ namespace dtp15_todolist
         public static void SaveListToFile()
         {
             string todoFileName = "todo.lis";
-            if (list.Count > 0)
+            if (todoList.Count > 0)
             {
                 Console.WriteLine($". Writing list to file \"/{todoFileName}\".");
                 using (StreamWriter sw = new StreamWriter(todoFileName))
                 {
                     string listLine;
-                    foreach (TodoItem item in list)
+                    foreach (TodoItem item in todoList)
                     {
-                        listLine = $"{item.status}|{item.priority}|{item.task}|{item.taskDescription}";
+                        listLine = $"{item.taskStatus}|{item.taskPriority}|{item.taskName}|{item.taskDescription}";
                         sw.WriteLine(listLine);
                     }
                     Console.WriteLine($". List successfully saved to \"/{todoFileName}\".");
@@ -103,7 +103,6 @@ namespace dtp15_todolist
             {
                 Console.WriteLine($". List could not be saved to \"/{todoFileName}\", list is empty!");
             }
-
         }
         private static void PrintHeadOrFoot(bool head, bool verbose)
         {
@@ -125,12 +124,19 @@ namespace dtp15_todolist
         {
             PrintHeadOrFoot(head: false, verbose);
         }
-        public static void PrintTodoList(bool verbose = false)
+        public static void PrintTodoList(bool allTasks = false, bool verbose = false)
         {
             PrintHead(verbose);
-            foreach (TodoItem item in list)
+            if (allTasks)
             {
-                item.Print(verbose);
+                foreach (TodoItem item in todoList) item.Print(verbose);
+            }
+            else
+            {
+                foreach (TodoItem item in todoList)
+                {
+                    if (item.taskStatus == Active) item.Print(verbose);
+                }
             }
             PrintFoot(verbose);
         }
