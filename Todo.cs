@@ -74,11 +74,36 @@ namespace dtp15_todolist
             }
             else
             {
-                Console.WriteLine($". No file \"{todoFileName}\" found, press any key to create file.");
+                Console.WriteLine($". No file \"{todoFileName}\" found, press any key to create file and restart program.");
                 Console.ReadKey(true);
                 File.Create(todoFileName);
                 Console.WriteLine($". File \"{todoFileName}\" successfully created!\r\n");
+                MainClass.AppRestart();
             }
+        }
+        public static void SaveListToFile()
+        {
+            string todoFileName = "todo.lis";
+            if (list.Count > 0)
+            {
+                Console.WriteLine($". Writing list to file \"/{todoFileName}\".");
+                using (StreamWriter sw = new StreamWriter(todoFileName))
+                {
+                    string listLine;
+                    foreach (TodoItem item in list)
+                    {
+                        listLine = $"{item.status}|{item.priority}|{item.task}|{item.taskDescription}";
+                        sw.WriteLine(listLine);
+                    }
+                    Console.WriteLine($". List successfully saved to \"/{todoFileName}\".");
+                    sw.Close();
+                }
+            }
+            else
+            {
+                Console.WriteLine($". List could not be saved to \"/{todoFileName}\", list is empty!");
+            }
+
         }
         private static void PrintHeadOrFoot(bool head, bool verbose)
         {
