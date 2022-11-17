@@ -9,16 +9,21 @@
 	-General:
 		.Changed console output & input language to English, and changed console UI.
 		.Separated classes into separate class files.
+		.Added file restoration (todo.lis) upon program launch if no file is found.
+		.Changed some variables across the program. 
 	-Program.cs:
 		.Added "new" task command function to program.
-		.Update "new" command function (add "new 'task name'") to program.
+		.Updated "new" command function (added "new 'task name'").
 		.Added new static method "AddNewTask" for new task creation.
 		.Added new "save" command function to program.
-		.Updated "quit" command fucntion to save file before shutdown.
+		.Updated "quit" command function to save file before shutdown.
 		.Added "AppRestart" static method to program.
 		.Updated if-else conditions to appropriate methods in MyIO class.
+		.Added "list" description commands to program.
+		.Changed "list" command function to only show active tasks. 
+		.Changed "list all" command function to show all tasks. 
 	-MyIO.cs:
-		.Reworked "ReadCommands" method to return string array.
+		.Reworked "ReadCommand" method to return string array.
 		.Reworked "Equals" method to "Contains" to look for specific string in array.
 		.Reworked "Contains" method to "CheckFirstCommand" for a more precise functionality.
 		.Added "CheckAdditionalCommands" method to furhter elaborate the command tree.
@@ -26,6 +31,7 @@
 		.Moved "PrintHelp" method to Program class.
 		.Reworked "ReadListFromFile" method, added file check and file creation.
 		.Added new "SaveListToFile" static method.
+		.Changed "PrintTodoList" method to better incorporate some command features.
 
 -To-Do's.
 	-General:
@@ -36,9 +42,9 @@
 [NYI]	.Add "new" task command function to program. (READY)
 [NYI]	.Update "new" command function (add "new 'task name'") to program. (READY)
 [NYI]	.Add new static method for new task creation. (READY)
-[NYI]	.Add "list description" command function to program. (WAITING)
-[TBD]	.Change "list" command function to only show active tasks. (WAITING)
-[TBD]	.Change "list all" command function to show all tasks. (WAITING)
+[NYI]	.Add "list description" command function to program. (READY)
+[TBD]	.Change "list" command function to only show active tasks. (READY)
+[TBD]	.Change "list all" command function to show all tasks. (READY)
 [NYI]	.Add "save" command function to program. (READY)
 [TBD]	.Update "quit" command function to save file before shutdown. (READY)
 [NYI]	.Add "load" command function to program. (WAITING)
@@ -48,7 +54,10 @@
 [TBD]	.Rework "ReadCommands" method to return string array. (READY)
 [TBD]	.Rework MyIO methods to better suit program functionality. (READY) 
 [NYI]	.Add MyIO methods to better suit program functionality. (READY)
+[NYI]	.Create a more elaborate method for better command functionality. (WAITING)
 	-ToDo.cs:
 [TBD]	.Move "PrintHelp" method to Program class. (READY)
 [TBD]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
 [NYI]	.Add "SaveListToFile" method. (READY)
+[TBD]	.Change "PrintTodoList" method to better incorporate some command features. (READY)
+[NYI]	.Add "ListSorter" method to sort tasks first according to status, then priority. (WAITING)
