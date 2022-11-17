@@ -68,8 +68,8 @@ namespace dtp15_todolist
         {
             Console.WriteLine(".................COMMANDS.................\r\n");
             Console.WriteLine($"- {"help", -30}List all commands.");
-            Console.WriteLine($"- {"list...    +/-describe", -30}List all active tasks in to-do list, with or without description.");
-            Console.WriteLine($"  {"    ...all +/-describe", -30}List all tasks in to-do list, with or without description.");
+            Console.WriteLine($"- {"list...    +/-description", -30}List all active tasks in to-do list, with or without description.");
+            Console.WriteLine($"  {"    ...all +/-description", -30}List all tasks in to-do list, with or without description.");
             Console.WriteLine($"- {"new...", -30}Add new task to to-do list.");
             Console.WriteLine($"  {"   ...\"task name\"", -30}Add new task to to-do list, and initialize with a task name.");
             Console.WriteLine($"- {"save", -30}Saves current to-do list to \"/todo.lis\".");
@@ -90,29 +90,31 @@ namespace dtp15_todolist
             string[] commandLines;
             do
             {
-                commandLines = MyIO.ReadCommands("> ");
-                if (MyIO.Contains(commandLines, "help"))
+                commandLines = MyIO.ReadCommand("> ");
+                if (MyIO.CheckFirstCommand(commandLines, "help"))
                 {
                     PrintHelp();
                 }
-                else if (MyIO.Contains(commandLines, "list"))
+                else if (MyIO.CheckFirstCommand(commandLines, "list"))
                 {
-                    //if (MyIO.HasArgument(command[1], "all"))
-                    //    Todo.PrintTodoList(verbose: true);
-                    //else
-                    //    Todo.PrintTodoList(verbose: false);
-                    Todo.PrintTodoList(verbose: true);
+                    if (MyIO.CheckAdditionalCommands(commandLines, "all"))
+                        Todo.PrintTodoList(verbose: true);
+                    else
+                        Todo.PrintTodoList(verbose: false);
                 }
-                else if (MyIO.Contains(commandLines, "new"))
+                else if (MyIO.CheckFirstCommand(commandLines, "new"))
                 {
-                    if (commandLines.Length > 1) { AddNewTask(commandLines[1]); }
+                    if (commandLines.Length > 1 && commandLines[1] != "")
+                    {
+                        AddNewTask(commandLines[1]);
+                    }
                     else AddNewTask();
                 }
-                else if (MyIO.Contains(commandLines, "save"))
+                else if (MyIO.CheckFirstCommand(commandLines, "save"))
                 {
                     Todo.SaveListToFile();
                 }
-                else if (MyIO.Contains(commandLines, "quit"))
+                else if (MyIO.CheckFirstCommand(commandLines, "quit"))
                 {
                     Todo.SaveListToFile();
                     Console.WriteLine("\r\n. Thank you for using To-Do List!\r\n. Press any key to shutdown application.");
