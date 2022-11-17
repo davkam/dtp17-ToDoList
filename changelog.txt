@@ -11,12 +11,15 @@
 		.Separated classes into separate class files.
 	-Program.cs:
 		.Added "new" task command function to program.
+		.Update "new" command function (add "new 'task name'") to program.
 		.Added new static method "AddNewTask" for new task creation.
 		.Added new "save" command function to program.
 		.Updated "quit" command fucntion to save file before shutdown.
 		.Added "AppRestart" static method to program.
+		.Updated if-else conditions to appropriate methods in MyIO class.
 	-MyIO.cs:
-		.
+		.Reworked "ReadCommands" method to return string array.
+		.Reworked "Equals" method to "Contains" to look for specific string in array.
 	-ToDo.cs:
 		.Moved "PrintHelp" method to Program class.
 		.Reworked "ReadListFromFile" method, added file check and file creation.
@@ -29,6 +32,7 @@
 [NYI]	.Add descriptive summaries to classes and methods with doxygen. (WAITING)
 	-Program.cs
 [NYI]	.Add "new" task command function to program. (READY)
+[NYI]	.Update "new" command function (add "new 'task name'") to program. (READY)
 [NYI]	.Add new static method for new task creation. (READY)
 [NYI]	.Add "list description" command function to program. (WAITING)
 [TBD]	.Change "list" command function to only show active tasks. (WAITING)
@@ -39,7 +43,8 @@
 [NYI]	.Add set task status command function to program. (WAITING)
 [NYI]	.Add "AppRestart" static method to program. (READY)
 	-MyIO.cs:
-		.
+[TBD]	.Rework "ReadCommands" method to return string array. (READY)
+[TBD]	.Rework "Equals" method to "Contains" to look for specific string in array. (READY) 
 	-ToDo.cs:
 [TBD]	.Move "PrintHelp" method to Program class. (READY)
 [TBD]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
