@@ -20,6 +20,8 @@
 	-MyIO.cs:
 		.Reworked "ReadCommands" method to return string array.
 		.Reworked "Equals" method to "Contains" to look for specific string in array.
+		.Reworked "Contains" method to "CheckFirstCommand" for a more precise functionality.
+		.Added "CheckAdditionalCommands" method to furhter elaborate the command tree.
 	-ToDo.cs:
 		.Moved "PrintHelp" method to Program class.
 		.Reworked "ReadListFromFile" method, added file check and file creation.
@@ -44,7 +46,8 @@
 [NYI]	.Add "AppRestart" static method to program. (READY)
 	-MyIO.cs:
 [TBD]	.Rework "ReadCommands" method to return string array. (READY)
-[TBD]	.Rework "Equals" method to "Contains" to look for specific string in array. (READY) 
+[TBD]	.Rework MyIO methods to better suit program functionality. (READY) 
+[NYI]	.Add MyIO methods to better suit program functionality. (READY)
 	-ToDo.cs:
 [TBD]	.Move "PrintHelp" method to Program class. (READY)
 [TBD]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
