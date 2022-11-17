@@ -1,4 +1,7 @@
-﻿namespace dtp15_todolist
+﻿using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace dtp15_todolist
 {
     class MainClass
     {
@@ -64,14 +67,21 @@
         public static void PrintHelp()
         {
             Console.WriteLine(".................COMMANDS.................\r\n");
-            Console.WriteLine($"- {"help",-20}List all commands.");
-            Console.WriteLine($"- {"list...",-20}List all active tasks in to-do list.");
-            Console.WriteLine($"  {"    ...all",-20}List all tasks in to-do list.");
-            Console.WriteLine($"- {"new...",-20}Add new task to to-do list.");
-            Console.WriteLine($"  {"   ...\"task name\"",-20}Add new task to to-do list, and initialize with a task name.");
-            Console.WriteLine($"- {"quit",-20}Quit and save to-do list.");
+            Console.WriteLine($"- {"help", -30}List all commands.");
+            Console.WriteLine($"- {"list...    +/-describe", -30}List all active tasks in to-do list, with or without description.");
+            Console.WriteLine($"  {"    ...all +/-describe", -30}List all tasks in to-do list, with or without description.");
+            Console.WriteLine($"- {"new...", -30}Add new task to to-do list.");
+            Console.WriteLine($"  {"   ...\"task name\"", -30}Add new task to to-do list, and initialize with a task name.");
+            Console.WriteLine($"- {"save", -30}Saves current to-do list to \"/todo.lis\".");
+            Console.WriteLine($"- {"quit", -30}Quit and save to-do list.");
             Console.WriteLine();
         }
+        public static void AppRestart()
+        {
+            Process.Start("dtp15_todolist.exe");
+            Process.GetCurrentProcess().Kill();
+        }
+
         public static void Main(string[] args)
         {
             Console.WriteLine("................TO-DO LIST................\r\n");
@@ -96,9 +106,14 @@
                 {
                     AddNewTask();
                 }
+                else if (MyIO.Equals(command, "save"))
+                {
+                    Todo.SaveListToFile();
+                }
                 else if (MyIO.Equals(command, "quit"))
                 {
-                    Console.WriteLine(". Thank you for using To-Do List!");
+                    Todo.SaveListToFile();
+                    Console.WriteLine(". Thank you for using To-Do List!\r\n. Press any key to shutdown application.");
                     break;
                 }
                 else
