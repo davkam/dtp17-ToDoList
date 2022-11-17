@@ -9,7 +9,7 @@ namespace dtp15_todolist
     public class Todo
     {
         public static List<TodoItem> todoList = new List<TodoItem>();
-
+        
         public const int Active = 1;
         public const int Waiting = 2;
         public const int Ready = 3;
@@ -34,10 +34,10 @@ namespace dtp15_todolist
                 taskName = field[2];
                 taskDescription = field[3];
             }
-            public void Print(bool verbose = false)
+            public void Print(bool verbose = false, int i = 0)
             {
                 string statusString = StatusToString(taskStatus);
-                Console.Write($"|{statusString,-12}|{taskPriority,-6}|{taskName,-20}|");
+                Console.Write($"|{(i+1) + ". " + taskName,-20}|{statusString,-12}|{taskPriority,-6}|");
                 if (verbose)
                     Console.WriteLine($"{taskDescription,-40}|");
                 else
@@ -78,7 +78,7 @@ namespace dtp15_todolist
                 Console.ReadKey(true);
                 File.Create(todoFileName);
                 Console.WriteLine($". File \"{todoFileName}\" successfully created!\r\n");
-                MainClass.AppRestart();
+                Program.AppRestart();
             }
         }
         public static void SaveListToFile()
@@ -108,11 +108,11 @@ namespace dtp15_todolist
         {
             if (head)
             {
-                Console.Write("|STATUS      |PRIO  |NAME                |");
-                if (verbose) Console.WriteLine("DESCRIPTION                             |");
+                Console.Write($"|{"# NAME",-20}|{"STATUS",-12}|{"PRIO",-6}|");
+                if (verbose) Console.WriteLine($"{"DESCRIPTION",-40}|");
                 else Console.WriteLine();
             }
-            Console.Write("|------------|------|--------------------|");
+            Console.Write("|--------------------|------------|------|");
             if (verbose) Console.WriteLine("----------------------------------------|");
             else Console.WriteLine();
         }
@@ -129,13 +129,13 @@ namespace dtp15_todolist
             PrintHead(verbose);
             if (allTasks)
             {
-                foreach (TodoItem item in todoList) item.Print(verbose);
+                foreach (TodoItem item in todoList) item.Print(verbose, todoList.IndexOf(item));
             }
             else
             {
                 foreach (TodoItem item in todoList)
                 {
-                    if (item.taskStatus == Active) item.Print(verbose);
+                    if (item.taskStatus == Active) item.Print(verbose, todoList.IndexOf(item));
                 }
             }
             PrintFoot(verbose);
