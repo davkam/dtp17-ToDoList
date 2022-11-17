@@ -11,10 +11,10 @@
         {
             switch (status)
             {
-                case Active: return "aktiv";
-                case Waiting: return "väntande";
-                case Ready: return "avklarad";
-                default: return "(felaktig)";
+                case Active: return "Active";
+                case Waiting: return "Waiting";
+                case Ready: return "Ready";
+                default: return "INCORRECT";
             }
         }
         public class TodoItem
@@ -51,10 +51,9 @@
         public static void ReadListFromFile()
         {
             string todoFileName = "todo.lis";
-            Console.Write($"Läser från fil {todoFileName} ... ");
+            Console.Write($"- Loading file \"/{todoFileName}\".");
             StreamReader sr = new StreamReader(todoFileName);
             int numRead = 0;
-
             string line;
             while ((line = sr.ReadLine()) != null)
             {
@@ -63,14 +62,14 @@
                 numRead++;
             }
             sr.Close();
-            Console.WriteLine($"Läste {numRead} rader.");
+            Console.WriteLine($"- {numRead} lines successfully loaded.\r\n");
         }
         private static void PrintHeadOrFoot(bool head, bool verbose)
         {
             if (head)
             {
-                Console.Write("|status      |prio  |namn                |");
-                if (verbose) Console.WriteLine("beskrivning                             |");
+                Console.Write("|STATUS      |PRIO  |NAME                |");
+                if (verbose) Console.WriteLine("DESCRIPTION                             |");
                 else Console.WriteLine();
             }
             Console.Write("|------------|------|--------------------|");
@@ -96,42 +95,42 @@
         }
         public static void PrintHelp()
         {
-            Console.WriteLine("Kommandon:");
-            Console.WriteLine("hjälp    lista denna hjälp");
-            Console.WriteLine("lista    lista att-göra-listan");
-            Console.WriteLine("sluta    spara att-göra-listan och sluta");
+            Console.WriteLine(".................COMMANDS.................\r\n");
+            Console.WriteLine("- help       List all commands.");
+            Console.WriteLine("- list       List all active tasks in to-do list.");
+            Console.WriteLine("- quit       Quit and save to-do list");
         }
     }
     class MainClass
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Välkommen till att-göra-listan!");
-            Todo.ReadListFromFile();
+            Console.WriteLine("................TO-DO LIST................\r\n");
+            //Todo.ReadListFromFile();
             Todo.PrintHelp();
             string command;
             do
             {
                 command = MyIO.ReadCommand("> ");
-                if (MyIO.Equals(command, "hjälp"))
+                if (MyIO.Equals(command, "help"))
                 {
                     Todo.PrintHelp();
                 }
-                else if (MyIO.Equals(command, "sluta"))
+                else if (MyIO.Equals(command, "list"))
                 {
-                    Console.WriteLine("Hej då!");
-                    break;
-                }
-                else if (MyIO.Equals(command, "lista"))
-                {
-                    if (MyIO.HasArgument(command, "allt"))
+                    if (MyIO.HasArgument(command, "all"))
                         Todo.PrintTodoList(verbose: true);
                     else
                         Todo.PrintTodoList(verbose: false);
                 }
+                else if (MyIO.Equals(command, "quit"))
+                {
+                    Console.WriteLine(". Thank you for using To-Do List!");
+                    break;
+                }
                 else
                 {
-                    Console.WriteLine($"Okänt kommando: {command}");
+                    Console.WriteLine($"Unknown command: {command}");
                 }
             }
             while (true);

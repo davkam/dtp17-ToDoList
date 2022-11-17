@@ -1,0 +1,29 @@
+﻿#dtp17_todolist (hemtentamen)
+
+-Info.
+	.Original repo: "git@github.com:TomasKindahl/dtp15_todolist.git".
+	.To-Do List: A task storage program, creates, views and saves To-Do tasks.
+	.Added and upcoming changes and features from original repo are added to changelog.txt and todo.lis (as template).
+
+-Changelog.
+	-General:
+		.Changed console output & input language to English, and changed console UI.
+		.Separated classes into separate class files.
+	-Program.cs:
+		.
+	-MyIO.cs:
+		.
+	-ToDo.cs:
+		.
+
+-To-Do's.
+	-General:
+		.Change console output & input language to English, and change console UI. (READY)
+		.Separate all classes into separate files. (ACTIVE)
+		.Add descriptive summaries to classes and methods with doxygen. (WAITING)
+	-Program.cs
+		.
+	-MyIO.cs:
+		.
+	-ToDo.cs:
+		.
