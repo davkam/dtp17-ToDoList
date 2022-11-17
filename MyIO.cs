@@ -8,32 +8,31 @@ namespace dtp15_todolist
 {
     class MyIO
     {
-        static public string[] ReadCommands(string commandPrompt)
+        static public string[] ReadCommand(string commandPrompt)
         {
             Console.Write(commandPrompt);
-            string[] commandLines = Console.ReadLine().Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string[] commandLines = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
             return commandLines;
         }
-        static public bool Contains(string[] actualCommand, string expectedCommand)
+        static public bool CheckFirstCommand(string[] actualCommand, string expectedCommand)
         {
+            actualCommand[0] = actualCommand[0].ToLower();
+            if (actualCommand[0] == expectedCommand) return true;
+            else return false;
+        }
+        static public bool CheckAdditionalCommands(string[] actualCommand, string expectedCommand)
+        {
+            bool returnBool = false;
             foreach (string command in actualCommand)
             {
-                command.ToLower().Trim();
-                if (command == expectedCommand) return true;
+                if (command.ToLower() == expectedCommand)
+                {
+                    returnBool = true;
+                    break;
+                }
+                else returnBool = false;
             }
-            return false;
-        }
-        static public bool HasArgument(string rawCommand, string expected)
-        {
-            string command = rawCommand.Trim();
-            if (command == "") return false;
-            else
-            {
-                string[] cwords = command.Split(' ');
-                if (cwords.Length < 2) return false;
-                if (cwords[1] == expected) return true;
-            }
-            return false;
+            return returnBool;
         }
     }
 }
