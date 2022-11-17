@@ -22,6 +22,7 @@
 		.Added "list" description commands to program.
 		.Changed "list" command function to only show active tasks. 
 		.Changed "list all" command function to show all tasks. 
+		.Added "load" command function to program.
 	-MyIO.cs:
 		.Reworked "ReadCommand" method to return string array.
 		.Reworked "Equals" method to "Contains" to look for specific string in array.
@@ -32,6 +33,7 @@
 		.Reworked "ReadListFromFile" method, added file check and file creation.
 		.Added new "SaveListToFile" static method.
 		.Changed "PrintTodoList" method to better incorporate some command features.
+		.Changed "PrintHeadOrFoot" and "Print" methods to display index number of list item, and changed layout.
 
 -To-Do's.
 	-General:
@@ -47,7 +49,7 @@
 [TBD]	.Change "list all" command function to show all tasks. (READY)
 [NYI]	.Add "save" command function to program. (READY)
 [TBD]	.Update "quit" command function to save file before shutdown. (READY)
-[NYI]	.Add "load" command function to program. (WAITING)
+[NYI]	.Add "load" command function to program. (READY)
 [NYI]	.Add set task status command function to program. (WAITING)
 [NYI]	.Add "AppRestart" static method to program. (READY)
 	-MyIO.cs:
@@ -60,4 +62,5 @@
 [TBD]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
 [NYI]	.Add "SaveListToFile" method. (READY)
 [TBD]	.Change "PrintTodoList" method to better incorporate some command features. (READY)
+[TBD]	.Change "PrintHeadOrFoot" and "Print" methods to display index number of list item, and changed layout. (READY)
 [NYI]	.Add "ListSorter" method to sort tasks first according to status, then priority. (WAITING)
