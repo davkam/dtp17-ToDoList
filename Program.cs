@@ -3,7 +3,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace dtp15_todolist
 {
-    class MainClass
+    class Program
     {
         public static void AddNewTask(string taskName = "")
         {
@@ -67,14 +67,15 @@ namespace dtp15_todolist
         public static void PrintHelp()
         {
             Console.WriteLine(".................COMMANDS.................\r\n");
-            Console.WriteLine($"- {"help", -30}List all commands.");
-            Console.WriteLine($"- {"list...    (+/-)d", -30}List all active tasks in to-do list, with or without description.");
-            Console.WriteLine($"  {"    ...all (+/-)d", -30}List all tasks in to-do list, with or without description.");
-            Console.WriteLine($"  {"    ...help",-30}Shows possible \"list\" commands.");
-            Console.WriteLine($"- {"new...", -30}Add new task to to-do list.");
-            Console.WriteLine($"  {"   ...\"task name\"", -30}Add new task to to-do list, and initialize with a task name.");
-            Console.WriteLine($"- {"save", -30}Saves current to-do list to \"/todo.lis\".");
-            Console.WriteLine($"- {"quit", -30}Quit and save to-do list.");
+            Console.WriteLine($"- {"help", -20}List all commands.");
+            Console.WriteLine($"- {"list...    (-d)", -20}List all active tasks in to-do list, with or without description.");
+            Console.WriteLine($"  {"    ...all (-d)", -20}List all tasks in to-do list, with or without description.");
+            Console.WriteLine($"  {"    ...help",-20}Show possible \"list\" commands.");
+            Console.WriteLine($"- {"new...", -20}Add new task to to-do list.");
+            Console.WriteLine($"  {"   ...\"task name\"", -20}Add new task to to-do list, and initialize with a task name.");
+            Console.WriteLine($"- {"load",-20}Load to-do list from \"/todo.lis\".");
+            Console.WriteLine($"- {"save", -20}Save current to-do list to \"/todo.lis\".");
+            Console.WriteLine($"- {"quit", -20}Quit and save to-do list.");
             Console.WriteLine();
         }
         public static void AppRestart()
@@ -100,7 +101,7 @@ namespace dtp15_todolist
                 {
                     if (MyIO.CheckAdditionalCommands(commandLines, "all"))
                     {
-                        if (MyIO.CheckAdditionalCommands(commandLines, "+d")) Todo.PrintTodoList(allTasks: true, verbose: true);
+                        if (MyIO.CheckAdditionalCommands(commandLines, "-d")) Todo.PrintTodoList(allTasks: true, verbose: true);
                         else Todo.PrintTodoList(allTasks: true, verbose: false);
                     }
                     else if (MyIO.CheckAdditionalCommands(commandLines, "help"))
@@ -113,7 +114,7 @@ namespace dtp15_todolist
                     }
                     else
                     {
-                        if (MyIO.CheckAdditionalCommands(commandLines, "+d")) Todo.PrintTodoList(allTasks: false, verbose: true);
+                        if (MyIO.CheckAdditionalCommands(commandLines, "-d")) Todo.PrintTodoList(allTasks: false, verbose: true);
                         else Todo.PrintTodoList(allTasks: false, verbose: false);
                     }
                 }
@@ -124,6 +125,10 @@ namespace dtp15_todolist
                         AddNewTask(commandLines[1]);
                     }
                     else AddNewTask();
+                }
+                else if (MyIO.CheckFirstCommand(commandLines, "load"))
+                {
+                    Todo.ReadListFromFile();
                 }
                 else if (MyIO.CheckFirstCommand(commandLines, "save"))
                 {
