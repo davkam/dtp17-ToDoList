@@ -8,19 +8,18 @@ namespace dtp15_todolist
 {
     class MyIO
     {
-        static public string ReadCommand(string prompt)
+        static public string[] ReadCommands(string commandPrompt)
         {
-            Console.Write(prompt);
-            return Console.ReadLine();
+            Console.Write(commandPrompt);
+            string[] commandLines = Console.ReadLine().Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            return commandLines;
         }
-        static public bool Equals(string rawCommand, string expected)
+        static public bool Contains(string[] actualCommand, string expectedCommand)
         {
-            string command = rawCommand.Trim();
-            if (command == "") return false;
-            else
+            foreach (string command in actualCommand)
             {
-                string[] cwords = command.Split(' ');
-                if (cwords[0] == expected) return true;
+                command.ToLower().Trim();
+                if (command == expectedCommand) return true;
             }
             return false;
         }
