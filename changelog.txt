@@ -14,16 +14,16 @@
 	-MyIO.cs:
 		.
 	-ToDo.cs:
-		.
+		.Moved "PrintHelp" method to Program class.
 
 -To-Do's.
 	-General:
-		.Change console output & input language to English, and change console UI. (READY)
-		.Separate all classes into separate files. (ACTIVE)
-		.Add descriptive summaries to classes and methods with doxygen. (WAITING)
+[TBD]	.Change console output & input language to English, and change console UI. (READY)
+[TBD]	.Separate all classes into separate files. (READY)
+[NYI]	.Add descriptive summaries to classes and methods with doxygen. (WAITING)
 	-Program.cs
 		.
 	-MyIO.cs:
 		.
 	-ToDo.cs:
-		.
+[NYI]	.Move "PrintHelp" method to Program class. (READY)
