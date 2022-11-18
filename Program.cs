@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-//using static System.Net.Mime.MediaTypeNames;
 
 namespace dtp15_todolist
 {
@@ -17,16 +16,16 @@ namespace dtp15_todolist
         {
             Console.WriteLine(".................COMMANDS.................\r\n");
             Console.WriteLine($"- {"help", -30}List all commands.");
-            Console.WriteLine($"- {"list...   (-d)", -30}List all active tasks in to-do list, with or without description.");
-            Console.WriteLine($"  {"   ...all (-d)", -30}List all tasks in to-do list, with or without description.");
-            Console.WriteLine($"  {"   ...\"task name\"",-30}List specific task in to-do list with description.");
-            Console.WriteLine($"  {"   ...help",-30}Show possible \"list\" commands.");
+            Console.WriteLine($"- {"list...    -d", -30}List all active tasks in to-do list, with or without description (-d).");
+            Console.WriteLine($"  {"    ...all -d", -30}List all tasks in to-do list, with or without description (-d).");
+            Console.WriteLine($"  {"    ...\"task name\"",-30}List specific task in to-do list with description.");
+            Console.WriteLine($"  {"    ...help",-30}Show possible \"list\" commands.");
             Console.WriteLine($"- {"status...",-30}");
-            Console.WriteLine($"  {"   ...set",-30}Show all tasks, and change status on chosen task.");
-            Console.WriteLine($"  {"   ...\"status\"",-30}Change status of specific task, (active, waiting or ready).");
-            Console.WriteLine($"  {"   ...\"status\" \"task name\"",-30}Change status of specific task, (active, waiting or ready).");
+            Console.WriteLine($"  {"    ...change",-30}Show all tasks, and change status on chosen task.");
+            Console.WriteLine($"  {"    ...\"task name\"",-30}Change status of specific task.");
+            Console.WriteLine($"  {"    ...\"task name\" \"status\"",-30}Change status of specific task to active, waiting or ready.");
             Console.WriteLine($"- {"new...", -30}Add new task to to-do list.");
-            Console.WriteLine($"  {"   ...\"task name\"",-30}Add new task to to-do list, and initialize with a task name"); // delete, clear, change 
+            Console.WriteLine($"  {"    ...\"task name\"",-30}Add new task to to-do list, and initialize with a task name"); // delete, clear, change 
             Console.WriteLine($"- {"load",-30}Load to-do list from \"/todo.lis\".");
             Console.WriteLine($"- {"save", -30}Save current to-do list to \"/todo.lis\".");
             Console.WriteLine($"- {"quit", -30}Quit and save to-do list.");
@@ -56,25 +55,25 @@ namespace dtp15_todolist
             do
             {
                 commandLines = MyIO.ReadCommand("> ");
-                if (MyIO.CheckFirstCommand(commandLines, "help"))
+                if (MyIO.CheckFirstCommand(commandLines, "help") && commandLines.Length <= 1)
                 {
                     PrintHelp();
                 }
                 else if (MyIO.CheckFirstCommand(commandLines, "list"))
                 {
-                    if (MyIO.CheckAdditionalCommands(commandLines, "all"))
+                    if (MyIO.CheckAdditionalCommands(commandLines, "all") && commandLines.Length <= 3)
                     {
                         if (MyIO.CheckAdditionalCommands(commandLines, "-d")) Todo.PrintTodoList(allTasks: true, verbose: true);
                         else Todo.PrintTodoList(allTasks: true, verbose: false);
                     }
-                    else if (MyIO.CheckCommandTaskName(commandLines, taskNameCommands))
+                    else if (MyIO.CheckCommandTaskName(commandLines, taskNameCommands) && commandLines.Length <= 2)
                     {
                         int taskIndex = MyIO.CheckCommandTaskIndex(commandLines, taskNameCommands);
                         Todo.PrintHead(true);
                         Todo.todoList[taskIndex].Print(true, taskIndex);
                         Todo.PrintFoot(true);
                     }
-                    else if (MyIO.CheckAdditionalCommands(commandLines, "help"))
+                    else if (MyIO.CheckAdditionalCommands(commandLines, "help") && commandLines.Length <= 2)
                     {
                         Console.WriteLine(". Possible \"list\" commands...");
                         Console.WriteLine($"- {"list",-20}Shows all active tasks without description.");
@@ -92,21 +91,16 @@ namespace dtp15_todolist
                 }
                 else if (MyIO.CheckFirstCommand(commandLines, "status"))
                 {
-                    if (MyIO.CheckAdditionalCommands(commandLines, "set")) Todo.ChangeTaskStatus();
-                    else if (MyIO.CheckAdditionalCommands(commandLines, "active"))
+                    if (MyIO.CheckAdditionalCommands(commandLines, "change") && commandLines.Length <= 2) Todo.ChangeTaskStatus();
+                    else if (MyIO.CheckCommandTaskName(commandLines, taskNameCommands) && commandLines.Length <= 3 )
                     {
-                        if (commandLines.Length > 2) Todo.ChangeTaskStatus(Todo.Active, commandLines[2]);
-                        else Todo.ChangeTaskStatus(Todo.Active);
-                    }
-                    else if (MyIO.CheckAdditionalCommands(commandLines, "waiting"))
-                    {
-                        if (commandLines.Length > 2) Todo.ChangeTaskStatus(Todo.Waiting, commandLines[2]);
-                        else Todo.ChangeTaskStatus(Todo.Waiting);
-                    }
-                    else if (MyIO.CheckAdditionalCommands(commandLines, "ready"))
-                    {
-                        if (commandLines.Length > 2) Todo.ChangeTaskStatus(Todo.Ready, commandLines[2]);
-                        else Todo.ChangeTaskStatus(Todo.Ready);
+                        int taskIndex = MyIO.CheckCommandTaskIndex(commandLines, taskNameCommands);
+
+                        if (MyIO.CheckAdditionalCommands(commandLines, "active")) Todo.ChangeTaskStatus(Todo.todoList[taskIndex].taskName, Todo.Active);
+                        else if (MyIO.CheckAdditionalCommands(commandLines, "waiting")) Todo.ChangeTaskStatus(Todo.todoList[taskIndex].taskName, Todo.Waiting);
+                        else if (MyIO.CheckAdditionalCommands(commandLines, "ready")) Todo.ChangeTaskStatus(Todo.todoList[taskIndex].taskName, Todo.Ready);
+                        else if (commandLines.Length <= 2) Todo.ChangeTaskStatus(Todo.todoList[taskIndex].taskName, 0);
+                        else UnknownCommand(commandLines);
                     }
                     else UnknownCommand(commandLines);
                 }
