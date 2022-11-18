@@ -26,12 +26,17 @@
 		.Added "status set" command to program.
 		.Added "status 'status' 'task name'" command to program.
 		.Moved "AddNewTask" method to Todo class.
+		.Added "list 'task name'" command.
+		.Added public string array of task name commands to use with MyIO methods.
+		.Added welcome screen to start up.
 	-MyIO.cs:
 		.Reworked "ReadCommand" method to return string array.
 		.Reworked "Equals" method to "Contains" to look for specific string in array.
 		.Reworked "Contains" method to "CheckFirstCommand" for a more precise functionality.
 		.Added "CheckAdditionalCommands" method to furhter elaborate the command tree.
 		.Added "CheckIndexRange" method for range check.
+		.Added "CheckCommandTaskName/Index" methods to improve function to "list" command.
+		
 	-ToDo.cs:
 		.Moved "PrintHelp" method to Program class.
 		.Reworked "ReadListFromFile" method, added file check and file creation.
@@ -39,6 +44,7 @@
 		.Changed "PrintTodoList" method to better incorporate some command features.
 		.Changed "PrintHeadOrFoot" and "Print" methods to display index number of list item, and changed layout.
 		.Added "ChangeTaskStatus" method to change task status through the command line.
+		.Added "TaskNamesToCommand" method to write task names to command array.
 
 -To-Do's.
 	-General:
@@ -57,11 +63,16 @@
 [NYI]	.Add "load" command function to program. (READY)
 [NYI]	.Add set task status command features to program. (READY)
 [NYI]	.Add "AppRestart" static method to program. (READY)
+[NYI]	.Add public string array of task name commands to use with MyIO methods. (READY)
+[NYI]	.Add "delete", "clear", "change" commands to program. (WAITING)
+[NYI]	.Add a welcome screen to start up. (READY)
 	-MyIO.cs:
-[TBD]	.Rework "ReadCommands" method to return string array. (READY)
+[TBD]	.Rework "ReadCommand" method to return string array. (READY)
 [TBD]	.Rework MyIO methods to better suit program functionality. (READY) 
 [NYI]	.Add MyIO methods to better suit program functionality. (READY)
 [NYI]	.Create more elaborate methods for better command functionality. (WAITING)
+[TBD]	.Rework MyIO methods to work with command arrays. (ACTIVE)
+[NYI]	.Add new methods to improve user functionality. (READY)
 	-ToDo.cs:
 [TBD]	.Move "PrintHelp" method to Program class. (READY)
 [TBD]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
@@ -70,3 +81,4 @@
 [TBD]	.Change "PrintHeadOrFoot" and "Print" methods to display index number of list item, and changed layout. (READY)
 [NYI]	.Add "ListSorter" method to sort tasks first according to status, then priority. (WAITING)
 [NYI]	.Add "ChangeTaskStatus" method to change status of tasks through the command. (READY)
+[NYI]	.Add "TaskNamesToCommand" method to write task names to command array. (READY)
