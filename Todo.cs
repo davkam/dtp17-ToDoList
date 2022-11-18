@@ -277,7 +277,7 @@ namespace dtp15_todolist
             Console.Write(". Set task description: ");
             newTaskDescription = Console.ReadLine();
 
-            newTaskPriority = MyIO.SetIndex(". Set task priority level (1-4): ", 0, 3) + 1 ;        // REF: for potential SetIndex changes!
+            newTaskPriority = MyIO.SetIndex(". Set task priority level (1-4): ", 1, 4);         // REF: for potential SetIndex changes!
 
             Console.WriteLine($". Add new task?\r\n");
             Console.WriteLine($"- {"TASK:",-20}{newTaskName}\r\n- {"TASK DESCRIPTION:",-20}{newTaskDescription}\r\n- {"TASK PRIORITY:",-20}{newTaskPriority}\r\n- {"TASK STATUS:",-20}{StatusToString(newTaskStatus)} (Default)\r\n");
@@ -355,7 +355,7 @@ namespace dtp15_todolist
             {
                 PrintTodoList(alltasks: true, verbose: false);
 
-                taskIndex = MyIO.SetIndex(". Which task would you like to delete?: #", 0, todoList.Count - 1);      // REF: for potential SetIndex changes!
+                taskIndex = MyIO.SetIndex(". Which task would you like to delete?: #", 1, todoList.Count) - 1;          // REF: for potential SetIndex changes!
 
                 taskname = todoList[taskIndex].taskName;
                 todoList.RemoveAt(taskIndex);
@@ -409,7 +409,7 @@ namespace dtp15_todolist
                 PrintTodoList(alltasks: true, verbose: false);
 
             pickTask:
-                taskIndex = MyIO.SetIndex(". Which task would you like to change status on?: #", 0, todoList.Count - 1);        // REF: for potential SetIndex changes!
+                taskIndex = MyIO.SetIndex(". Which task would you like to change status on?: #", 1, todoList.Count) - 1;            // REF: for potential SetIndex changes!
                 setStatus = AskTaskStatus(todoList[taskIndex].taskName);
 
             finalCheck:
@@ -499,7 +499,7 @@ namespace dtp15_todolist
             }
             else if (keyPressed.Key == ConsoleKey.Escape)
             {
-                Console.WriteLine($". No option chosen, default status \"WAITING\" set!");
+                Console.WriteLine($". No option chosen, default status \"WAITING\" will be set!");
                 returnInt = Waiting;
             }
             else

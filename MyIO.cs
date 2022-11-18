@@ -137,7 +137,7 @@ namespace dtp15_todolist
             Console.Write(consoleOutput);
             try
             {
-                index = Int32.Parse(Console.ReadLine()) - 1;
+                index = Int32.Parse(Console.ReadLine());
                 MyIO.CheckIndexRange(index, min, max);
             }
             catch (System.FormatException)
