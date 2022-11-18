@@ -13,6 +13,7 @@ namespace dtp15_todolist
     /// </summary>
         // NYI: add new method 'ListSorter' to sort objects in class according to 'taskStatus' and then 'taskPriority'.
         // NYI: add new "FindTaskIndex" method for use in other methods.
+        // TBD: make todoFileName a public attribute for use in other methods.
     public class Todo
     {
         /// <summary>
@@ -322,11 +323,13 @@ namespace dtp15_todolist
 
                 if (keyPressed.Key == ConsoleKey.Enter)
                 {
-                    todoList.Clear();
-                    Console.WriteLine(". To-Do list successfully cleared! To save changes use \"save\" command.");
+                    File.Delete("todo.lis");
 
-                    Program.taskNameCommands = new string[todoList.Count];
-                    AddTaskNamesToCommand();
+                    Console.WriteLine(". To-Do list successfully cleared! To continue press any key to restart application.");
+                    Console.ReadKey(true);
+
+                    File.Create("todo.lis");
+                    Program.AppRestart();
                 }
                 else if (keyPressed.Key == ConsoleKey.Escape)
                 {
