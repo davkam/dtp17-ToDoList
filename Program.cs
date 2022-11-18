@@ -62,7 +62,7 @@ namespace dtp15_todolist
             Console.WriteLine($"- {"status...",-30}");
             Console.WriteLine($"  {"     ...change",-30}Show all tasks, and change status on chosen task.");
             Console.WriteLine($"  {"     ...\"task name\"",-30}Change status of specified task.");
-            Console.WriteLine($"  {"     ...\"task name\" \"status\"",-30}Change status of specified task to active, waiting or ready.");
+            Console.WriteLine($"  {"     ...\"task name\" 'status'",-30}Change status of specified task to active, waiting or ready.");
             Console.WriteLine($"- {"new...",-30}Add new task to to-do list.");
             Console.WriteLine($"  {"     ...\"task name\"",-30}Add new task to to-do list, and initialize with specified task name");
             Console.WriteLine($"- {"delete...",-30}Show all tasks, and delete chosen task.");
@@ -96,10 +96,11 @@ namespace dtp15_todolist
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-                // application starts here:
+            // application starts here:
             AppStartUp();
             PrintHelp();
             string[] commandLines;
+
             do
             {
                     // do-while loop with conditional statements based on user input command:
