@@ -8,51 +8,51 @@
 		.Changed some variables across the program. 
 
 	-PROGRAM.cs:
-		.Added "new" task command function to program.
-		.Updated "new" command function (added "new 'task name'").
+		.Added 'new' task command function to program.
+		.Updated 'new' command function (added 'new "task name"').
 		.Added new static method "AddNewTask" for new task creation.
-		.Added new "save" command function to program.
-		.Updated "quit" command function to save file before shutdown.
-		.Added "AppRestart" static method to program.
-		.Updated if-else conditions to appropriate methods in MyIO class.
-		.Added "list" description commands to program.
-		.Changed "list" command function to only show active tasks. 
-		.Changed "list all" command function to show all tasks. 
-		.Added "load" command function to program.
-		.Added "status set" command to program.
-		.Added "status 'status' 'task name'" command to program.
-		.Moved "AddNewTask" method to Todo class.
-		.Added "list 'task name'" command.
+		.Added new 'save' command function to program.
+		.Updated 'quit' command function to save file before shutdown.
+		.Added AppRestart-method to program.
+		.Updated if-else conditions to better suit methods in MyIO class.
+		.Added list description commands to program.
+		.Changed 'list' command function to only show active tasks. 
+		.Changed 'list all' command function to show all tasks. 
+		.Added 'load' command function to program.
+		.Added 'status set' command to program.
+		.Added 'status "task name" status' command to program.
+		.Moved  AddNewTask-method to Todo class.
+		.Added 'list "task name"' command.
 		.Added public string array of task name commands to use with MyIO methods.
 		.Added welcome screen to start up.
-		.Reworked "status" commands.
-		.Added "delete" commands to program.
+		.Reworked 'status' commands.
+		.Added 'delete' commands to program.
 		.Added documentation and commenting to Program class.
-		.Added "to-do" remarks.
+		.Added to-do remarks.
 		.Added new command functionality with the use of citation marks.
 
 	-MyIO.cs:
-		.Reworked "ReadCommand" method to return string array.
-		.Reworked "Equals" method to "Contains" to look for specific string in array.
-		.Reworked "Contains" method to "CheckFirstCommand" for a more precise functionality.
-		.Added "CheckAdditionalCommands" method to furhter elaborate the command tree.
-		.Added "CheckIndexRange" method for range check.
-		.Added "CheckCommandTaskName/Index" methods to improve function to "list" command.
-		.Added "SetIndex" command.
+		.Reworked ReadCommand-method to return string array.
+		.Reworked Equals-method to CheckFirstCommand for better functionality.
+		.Added CheckAdditionalCommands-method to further elaborate the command tree.
+		.Added CheckIndexRange-method for range check.
+		.Added CheckCommandTaskName/Index-methods to improve function of 'list' command.
+		.Added SetIndex-method.
 		.Added documentation and commenting to MyIO class.
-		.Added "to-do" remarks.
+		.Added to-do remarks.
+		.Added an Error-Check to ReadCommand-Method.
 		
 	-TODO.cs:
-		.Moved "PrintHelp" method to Program class.
-		.Reworked "ReadListFromFile" method, added file check and file creation.
-		.Added new "SaveListToFile" static method.
-		.Changed "PrintTodoList" method to better incorporate some command features.
-		.Changed "PrintHeadOrFoot" and "Print" methods to display index number of list item, and changed layout.
-		.Added "ChangeTaskStatus" method to change task status through the command line.
-		.Added "TaskNamesToCommand" method to write task names to command array.
-		.Reworked "ChangeTaskStatus" & "AddNewTask" methods.
-		.Added "SetTaskStatus" method.
-		.Added "DeleteTask" method.
+		.Moved PrintHelp-method to Program class.
+		.Reworked ReadListFromFile-method, added file check and file creation.
+		.Added new SaveListToFile-method.
+		.Changed PrintTodoList-method to better incorporate some command features.
+		.Changed PrintHeadOrFoot- and Print-methods to display index number of list item, and changed output.
+		.Added ChangeTaskStatus-method to change task status through the command line.
+		.Added TaskNamesToCommand-method to write task names to command array for search.
+		.Reworked ChangeTaskStatus- & AddNewTask-methods.
+		.Added SetTaskStatus-method.
+		.Added DeleteTask-method.
 		.Added documentation and commenting to Todo class.
-		.Added "to-do" remarks.
-		.Reworked "ReadCommand" method to identify citation marks.
+		.Added to-do remarks.
+		.Reworked ReadCommand-method to identify citation marks.
