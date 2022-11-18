@@ -1,29 +1,156 @@
 \hypertarget{classdtp15__todolist_1_1_my_i_o}{}\doxysection{dtp15\+\_\+todolist.\+My\+IO Class Reference}
 \label{classdtp15__todolist_1_1_my_i_o}\index{dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}}
+
+
+{\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_my_i_o}{My\+IO}}}} class. Contains public methods for use in other classes.   
+
+
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a3e8dd4ba8d44f82848b59be696908979}\label{classdtp15__todolist_1_1_my_i_o_a3e8dd4ba8d44f82848b59be696908979}} 
-static string\mbox{[}$\,$\mbox{]} {\bfseries Read\+Command} (string command\+Prompt)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a389e1bccc1120129b9031de49dd3e84e}\label{classdtp15__todolist_1_1_my_i_o_a389e1bccc1120129b9031de49dd3e84e}} 
-static bool {\bfseries Check\+First\+Command} (string\mbox{[}$\,$\mbox{]} actual\+Command, string expected\+Command)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a165d74ba70f16f61af887ab9cde742f2}\label{classdtp15__todolist_1_1_my_i_o_a165d74ba70f16f61af887ab9cde742f2}} 
-static bool {\bfseries Check\+Additional\+Commands} (string\mbox{[}$\,$\mbox{]} actual\+Command, string expected\+Command)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a354dd421d21eec45fd492b409230acad}\label{classdtp15__todolist_1_1_my_i_o_a354dd421d21eec45fd492b409230acad}} 
-static bool {\bfseries Check\+Command\+Task\+Name} (string\mbox{[}$\,$\mbox{]} actual\+Command, string\mbox{[}$\,$\mbox{]} expected\+Command)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a04cd02260ef1d3b7c6c5297820078bbd}\label{classdtp15__todolist_1_1_my_i_o_a04cd02260ef1d3b7c6c5297820078bbd}} 
-static int {\bfseries Check\+Command\+Task\+Index} (string\mbox{[}$\,$\mbox{]} actual\+Command, string\mbox{[}$\,$\mbox{]} expected\+Command)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a5521b4ccec78ba5e529d55aee9f27631}\label{classdtp15__todolist_1_1_my_i_o_a5521b4ccec78ba5e529d55aee9f27631}} 
-static void {\bfseries Check\+Index\+Range} (int value, int min, int max)
-\item 
+static string\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classdtp15__todolist_1_1_my_i_o_a3e8dd4ba8d44f82848b59be696908979}{Read\+Command}} (string command\+Prompt)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Read\+Command}} method. Takes a string to write to console, reads response from console and splits it into an array.  \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classdtp15__todolist_1_1_my_i_o_a389e1bccc1120129b9031de49dd3e84e}{Check\+First\+Command}} (string\mbox{[}$\,$\mbox{]} actual\+Command, string expected\+Command)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Check\+First\+Command}} method. Takes two arguments (string array, and string) and compares array to string. If array contains an equal string element it returns true, otherwise false.  \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classdtp15__todolist_1_1_my_i_o_a165d74ba70f16f61af887ab9cde742f2}{Check\+Additional\+Commands}} (string\mbox{[}$\,$\mbox{]} actual\+Command, string expected\+Command)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Check\+Additional\+Commands}} method Takes two arguments (string array, and string) and compares array to string. If array contains an equal string element it returns true, otherwise false.  \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classdtp15__todolist_1_1_my_i_o_a354dd421d21eec45fd492b409230acad}{Check\+Command\+Task\+Name}} (string\mbox{[}$\,$\mbox{]} actual\+Command, string\mbox{[}$\,$\mbox{]} expected\+Command)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Check\+Command\+Task\+Name}} method. Takes two string array arguments, and compares array to array. If the arrays contain at least one equal element it returns true, otherwise false.  \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classdtp15__todolist_1_1_my_i_o_a04cd02260ef1d3b7c6c5297820078bbd}{Check\+Command\+Task\+Index}} (string\mbox{[}$\,$\mbox{]} actual\+Command, string\mbox{[}$\,$\mbox{]} expected\+Command)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Check\+Command\+Task\+Index}} method. Takes two string array arguments, and compares array to array. If the arrays contain at least one equal element it returns the index array, otherwise returns integer set to 0.  \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classdtp15__todolist_1_1_my_i_o_a5521b4ccec78ba5e529d55aee9f27631}{Check\+Index\+Range}} (int value, int min, int max)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Check\+Index\+Range}} method. Takes three integer values, and compares if integer value is between min and max. If not, throws an exception!  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a685eef3e37e9fb9e8c2ee0407d6a2393}\label{classdtp15__todolist_1_1_my_i_o_a685eef3e37e9fb9e8c2ee0407d6a2393}} 
 static int {\bfseries Set\+Index} (string console\+Output, int min, int max)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+{\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_my_i_o}{My\+IO}}}} class. Contains public methods for use in other classes.  
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a165d74ba70f16f61af887ab9cde742f2}\label{classdtp15__todolist_1_1_my_i_o_a165d74ba70f16f61af887ab9cde742f2}} 
+\index{dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}!CheckAdditionalCommands@{CheckAdditionalCommands}}
+\index{CheckAdditionalCommands@{CheckAdditionalCommands}!dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}}
+\doxysubsubsection{\texorpdfstring{CheckAdditionalCommands()}{CheckAdditionalCommands()}}
+{\footnotesize\ttfamily static bool dtp15\+\_\+todolist.\+My\+IO.\+Check\+Additional\+Commands (\begin{DoxyParamCaption}\item[{string\mbox{[}$\,$\mbox{]}}]{actual\+Command,  }\item[{string}]{expected\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Check\+Additional\+Commands}} method Takes two arguments (string array, and string) and compares array to string. If array contains an equal string element it returns true, otherwise false.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual\+Command} & string\mbox{[}\mbox{]}.\\
+\hline
+{\em expected\+Command} & string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool (true or false).
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a04cd02260ef1d3b7c6c5297820078bbd}\label{classdtp15__todolist_1_1_my_i_o_a04cd02260ef1d3b7c6c5297820078bbd}} 
+\index{dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}!CheckCommandTaskIndex@{CheckCommandTaskIndex}}
+\index{CheckCommandTaskIndex@{CheckCommandTaskIndex}!dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}}
+\doxysubsubsection{\texorpdfstring{CheckCommandTaskIndex()}{CheckCommandTaskIndex()}}
+{\footnotesize\ttfamily static int dtp15\+\_\+todolist.\+My\+IO.\+Check\+Command\+Task\+Index (\begin{DoxyParamCaption}\item[{string\mbox{[}$\,$\mbox{]}}]{actual\+Command,  }\item[{string\mbox{[}$\,$\mbox{]}}]{expected\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Check\+Command\+Task\+Index}} method. Takes two string array arguments, and compares array to array. If the arrays contain at least one equal element it returns the index array, otherwise returns integer set to 0.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual\+Command} & string\mbox{[}\mbox{]}.\\
+\hline
+{\em expected\+Command} & string\mbox{[}\mbox{]}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer (default = 0).
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a354dd421d21eec45fd492b409230acad}\label{classdtp15__todolist_1_1_my_i_o_a354dd421d21eec45fd492b409230acad}} 
+\index{dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}!CheckCommandTaskName@{CheckCommandTaskName}}
+\index{CheckCommandTaskName@{CheckCommandTaskName}!dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}}
+\doxysubsubsection{\texorpdfstring{CheckCommandTaskName()}{CheckCommandTaskName()}}
+{\footnotesize\ttfamily static bool dtp15\+\_\+todolist.\+My\+IO.\+Check\+Command\+Task\+Name (\begin{DoxyParamCaption}\item[{string\mbox{[}$\,$\mbox{]}}]{actual\+Command,  }\item[{string\mbox{[}$\,$\mbox{]}}]{expected\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Check\+Command\+Task\+Name}} method. Takes two string array arguments, and compares array to array. If the arrays contain at least one equal element it returns true, otherwise false.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual\+Command} & string\mbox{[}\mbox{]}.\\
+\hline
+{\em expected\+Command} & string\mbox{[}\mbox{]}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool (true or false).
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a389e1bccc1120129b9031de49dd3e84e}\label{classdtp15__todolist_1_1_my_i_o_a389e1bccc1120129b9031de49dd3e84e}} 
+\index{dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}!CheckFirstCommand@{CheckFirstCommand}}
+\index{CheckFirstCommand@{CheckFirstCommand}!dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}}
+\doxysubsubsection{\texorpdfstring{CheckFirstCommand()}{CheckFirstCommand()}}
+{\footnotesize\ttfamily static bool dtp15\+\_\+todolist.\+My\+IO.\+Check\+First\+Command (\begin{DoxyParamCaption}\item[{string\mbox{[}$\,$\mbox{]}}]{actual\+Command,  }\item[{string}]{expected\+Command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Check\+First\+Command}} method. Takes two arguments (string array, and string) and compares array to string. If array contains an equal string element it returns true, otherwise false.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual\+Command} & string\mbox{[}\mbox{]}.\\
+\hline
+{\em expected\+Command} & string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool (true or false).
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a5521b4ccec78ba5e529d55aee9f27631}\label{classdtp15__todolist_1_1_my_i_o_a5521b4ccec78ba5e529d55aee9f27631}} 
+\index{dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}!CheckIndexRange@{CheckIndexRange}}
+\index{CheckIndexRange@{CheckIndexRange}!dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}}
+\doxysubsubsection{\texorpdfstring{CheckIndexRange()}{CheckIndexRange()}}
+{\footnotesize\ttfamily static void dtp15\+\_\+todolist.\+My\+IO.\+Check\+Index\+Range (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{int}]{min,  }\item[{int}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Check\+Index\+Range}} method. Takes three integer values, and compares if integer value is between min and max. If not, throws an exception!  
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & integer.\\
+\hline
+{\em min} & integer.\\
+\hline
+{\em max} & integer.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Index out of range!\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_my_i_o_a3e8dd4ba8d44f82848b59be696908979}\label{classdtp15__todolist_1_1_my_i_o_a3e8dd4ba8d44f82848b59be696908979}} 
+\index{dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}!ReadCommand@{ReadCommand}}
+\index{ReadCommand@{ReadCommand}!dtp15\_todolist.MyIO@{dtp15\_todolist.MyIO}}
+\doxysubsubsection{\texorpdfstring{ReadCommand()}{ReadCommand()}}
+{\footnotesize\ttfamily static string\mbox{[}$\,$\mbox{]} dtp15\+\_\+todolist.\+My\+IO.\+Read\+Command (\begin{DoxyParamCaption}\item[{string}]{command\+Prompt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Read\+Command}} method. Takes a string to write to console, reads response from console and splits it into an array.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em command\+Prompt} & string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string array (user commands).
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

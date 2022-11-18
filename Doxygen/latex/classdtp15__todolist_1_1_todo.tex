@@ -1,52 +1,49 @@
 \hypertarget{classdtp15__todolist_1_1_todo}{}\doxysection{dtp15\+\_\+todolist.\+Todo Class Reference}
 \label{classdtp15__todolist_1_1_todo}\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+
+
+{\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_todo}{Todo}}}} class. Contains public methods and variables involved in \textquotesingle{}to-\/do task\textquotesingle{} handling.   
+
+
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em {\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}}} subclass. Contains public methods, variables and a constructor for \textquotesingle{}to-\/do task\textquotesingle{} handling.  \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a7fbc9fa924727a4835d73b9b20c1cf6a}\label{classdtp15__todolist_1_1_todo_a7fbc9fa924727a4835d73b9b20c1cf6a}} 
-static string {\bfseries Status\+To\+String} (int status)
-\item 
+static string \mbox{\hyperlink{classdtp15__todolist_1_1_todo_a7fbc9fa924727a4835d73b9b20c1cf6a}{Status\+To\+String}} (int status)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Status\+To\+String}} method. Takes argument integer, and converts it to a string representing \textquotesingle{}task\+Status\textquotesingle{}.  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a13dbec3e2d2677ce34fa031acbfcc9bb}\label{classdtp15__todolist_1_1_todo_a13dbec3e2d2677ce34fa031acbfcc9bb}} 
 static void {\bfseries Add\+Task\+Names\+To\+Command} ()
-\item 
+\begin{DoxyCompactList}\small\item\em {\bfseries{Add\+Task\+Namesto\+Command}} method. Adds \textquotesingle{}task\+Names\textquotesingle{} to string array \textquotesingle{}task\+Name\+Commands\textquotesingle{} for use in \textquotesingle{}Main\textquotesingle{} class.  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a556300b5946c0c745cdc5a824603991e}\label{classdtp15__todolist_1_1_todo_a556300b5946c0c745cdc5a824603991e}} 
 static void {\bfseries Read\+List\+From\+File} ()
-\item 
+\begin{DoxyCompactList}\small\item\em {\bfseries{Read\+List\+From\+File}} method. Checks file existence, reads from file and adds new class object to list. If no file exists, file creates and app restarts.  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a72b3923cb83e7482b1b12bcb95cfa502}\label{classdtp15__todolist_1_1_todo_a72b3923cb83e7482b1b12bcb95cfa502}} 
 static void {\bfseries Save\+List\+To\+File} ()
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a3d8a159f390893fe3519e69af42fb18f}\label{classdtp15__todolist_1_1_todo_a3d8a159f390893fe3519e69af42fb18f}} 
-static void {\bfseries Print\+Head} (bool verbose)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a5ed6433e70f83c493f4e3ae3ca6d713a}\label{classdtp15__todolist_1_1_todo_a5ed6433e70f83c493f4e3ae3ca6d713a}} 
-static void {\bfseries Print\+Foot} (bool verbose)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a9f0abe1a3b887289c5a1a02ebb7f4d85}\label{classdtp15__todolist_1_1_todo_a9f0abe1a3b887289c5a1a02ebb7f4d85}} 
-static void {\bfseries Print\+Todo\+List} (bool all\+Tasks=false, bool verbose=false)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a61adfc3ade4dd8293a5e3bd2f95c0303}\label{classdtp15__todolist_1_1_todo_a61adfc3ade4dd8293a5e3bd2f95c0303}} 
-static void {\bfseries Add\+New\+Task} (string task\+Name=\char`\"{}\char`\"{})
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_ad8150c385b3805d688f905142df469f0}\label{classdtp15__todolist_1_1_todo_ad8150c385b3805d688f905142df469f0}} 
-static void {\bfseries Delete\+Task} (bool alltask, string taskname=\char`\"{}\char`\"{})
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a5e7a86ab414492240f74a59ca45bc868}\label{classdtp15__todolist_1_1_todo_a5e7a86ab414492240f74a59ca45bc868}} 
-static void {\bfseries Change\+Task\+Status} (string name=\char`\"{}\char`\"{}, int status=0)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a7668dd0424eeb170d276c8f87ac662aa}\label{classdtp15__todolist_1_1_todo_a7668dd0424eeb170d276c8f87ac662aa}} 
-static int {\bfseries Set\+Task\+Status} (string task\+Name)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em {\bfseries{Save\+List\+To\+File}} method. Checks list count, and writes list to file in dir.  \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classdtp15__todolist_1_1_todo_a3d8a159f390893fe3519e69af42fb18f}{Print\+Head}} (bool verbose)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Print\+Head}} method. Takes bool argument, calls \textquotesingle{}Print\+Head\+Or\+Foot\textquotesingle{} with two bool arguments (head\+: true).  \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classdtp15__todolist_1_1_todo_a5ed6433e70f83c493f4e3ae3ca6d713a}{Print\+Foot}} (bool verbose)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Print\+Foot}} method. Takes bool argument, calls \textquotesingle{}Print\+Head\+Or\+Foot\textquotesingle{} with two bool arguments (head\+: false).  \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classdtp15__todolist_1_1_todo_a4a05d8f20e9c50f25c209923f04874f8}{Print\+Todo\+List}} (bool alltasks=false, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Print\+Todo\+List}} method. Takes two bool agruments (false by default), and calls other print-\/methods in class. If \textquotesingle{}alltasks\textquotesingle{} is true, prints all tasks in list. If \textquotesingle{}alltasks\textquotesingle{} is not true, only prints active tasks in list. If \textquotesingle{}verbose\textquotesingle{} is true (false by default), prints a line demarcator for task description.  \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classdtp15__todolist_1_1_todo_a9236411fd75316e5b499f351c626a4e5}{Add\+New\+Task}} (string taskname=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em {\bfseries{Add\+New\+Task}} method. Takes a string argument (null by default), and adds a new class object to list.  \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classdtp15__todolist_1_1_todo_a7f297892c116b1bf6c0f3801a179fe5a}{Delete\+Task}} (bool alltasks, string taskname=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em {\bfseries{Delete\+Task}} method. Takes two arguments (bool and string), and deletes a task depending on arguement value. if bool is true, it clears entire task list. if bool is false, it checks if string is empty or not and clears a specific task.  \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classdtp15__todolist_1_1_todo_a4cd04237b7ac394c715d67cdda62bc7c}{Change\+Task\+Status}} (string taskname=\char`\"{}\char`\"{}, int taskstatus=0)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Change\+Task\+Status}} method. Takes two arguments, string (empty by default) and an integer (0 by default). If no arguments are given it changes status on chosen task from list. If only string argument is given it changes status on specified task. if both arguments are given it changes status on specified task to specified status.  \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classdtp15__todolist_1_1_todo_a3df0a5e5dacd36e14a64d27722461166}{Ask\+Task\+Status}} (string taskname)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Set\+Task\+Status}} method. Takes a string argument for a task name, asks what status you want to change task to. Used in \textquotesingle{}Change\+Task\+Status\textquotesingle{} method.  \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a3577dd18e02f748f674b5f4a58dff04b}\label{classdtp15__todolist_1_1_todo_a3577dd18e02f748f674b5f4a58dff04b}} 
 static List$<$ \mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}} $>$ {\bfseries todo\+List} = new List$<$\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}$>$()
-\item 
+\begin{DoxyCompactList}\small\item\em public list of class objects \textquotesingle{}todo\+List\textquotesingle{}.  \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a11be89543839e8b06dd9976a236b10d9}\label{classdtp15__todolist_1_1_todo_a11be89543839e8b06dd9976a236b10d9}} 
 const int {\bfseries Active} = 1
 \item 
@@ -59,9 +56,163 @@ const int {\bfseries Ready} = 3
 \doxysubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static void \mbox{\hyperlink{classdtp15__todolist_1_1_todo_ad1ec159e9fa1a74cf0589065bc1f1fed}{Print\+Head\+Or\+Foot}} (bool head, bool verbose)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Print\+Head\+Or\+Foot}} method. Takes two arguments (bools), checks which one is true and prints to console. If \textquotesingle{}head\textquotesingle{} is true, prints a header to console. if \textquotesingle{}verbose\textquotesingle{} is true, prints a line demarcator (for task description) to console.  \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+{\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_todo}{Todo}}}} class. Contains public methods and variables involved in \textquotesingle{}to-\/do task\textquotesingle{} handling.  
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a9236411fd75316e5b499f351c626a4e5}\label{classdtp15__todolist_1_1_todo_a9236411fd75316e5b499f351c626a4e5}} 
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!AddNewTask@{AddNewTask}}
+\index{AddNewTask@{AddNewTask}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{AddNewTask()}{AddNewTask()}}
+{\footnotesize\ttfamily static void dtp15\+\_\+todolist.\+Todo.\+Add\+New\+Task (\begin{DoxyParamCaption}\item[{string}]{taskname = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Add\+New\+Task}} method. Takes a string argument (null by default), and adds a new class object to list.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em taskname} & string (default = \char`\"{}\char`\"{}).\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a3df0a5e5dacd36e14a64d27722461166}\label{classdtp15__todolist_1_1_todo_a3df0a5e5dacd36e14a64d27722461166}} 
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!AskTaskStatus@{AskTaskStatus}}
+\index{AskTaskStatus@{AskTaskStatus}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{AskTaskStatus()}{AskTaskStatus()}}
+{\footnotesize\ttfamily static int dtp15\+\_\+todolist.\+Todo.\+Ask\+Task\+Status (\begin{DoxyParamCaption}\item[{string}]{taskname }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Set\+Task\+Status}} method. Takes a string argument for a task name, asks what status you want to change task to. Used in \textquotesingle{}Change\+Task\+Status\textquotesingle{} method.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em taskname} & string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer (task status).
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a4cd04237b7ac394c715d67cdda62bc7c}\label{classdtp15__todolist_1_1_todo_a4cd04237b7ac394c715d67cdda62bc7c}} 
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!ChangeTaskStatus@{ChangeTaskStatus}}
+\index{ChangeTaskStatus@{ChangeTaskStatus}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{ChangeTaskStatus()}{ChangeTaskStatus()}}
+{\footnotesize\ttfamily static void dtp15\+\_\+todolist.\+Todo.\+Change\+Task\+Status (\begin{DoxyParamCaption}\item[{string}]{taskname = {\ttfamily \char`\"{}\char`\"{}},  }\item[{int}]{taskstatus = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Change\+Task\+Status}} method. Takes two arguments, string (empty by default) and an integer (0 by default). If no arguments are given it changes status on chosen task from list. If only string argument is given it changes status on specified task. if both arguments are given it changes status on specified task to specified status.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em taskname} & string (default = \char`\"{}\char`\"{}).\\
+\hline
+{\em taskstatus} & int (default = 0).\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a7f297892c116b1bf6c0f3801a179fe5a}\label{classdtp15__todolist_1_1_todo_a7f297892c116b1bf6c0f3801a179fe5a}} 
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!DeleteTask@{DeleteTask}}
+\index{DeleteTask@{DeleteTask}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{DeleteTask()}{DeleteTask()}}
+{\footnotesize\ttfamily static void dtp15\+\_\+todolist.\+Todo.\+Delete\+Task (\begin{DoxyParamCaption}\item[{bool}]{alltasks,  }\item[{string}]{taskname = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Delete\+Task}} method. Takes two arguments (bool and string), and deletes a task depending on arguement value. if bool is true, it clears entire task list. if bool is false, it checks if string is empty or not and clears a specific task.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em alltasks} & bool.\\
+\hline
+{\em taskname} & string (default = \char`\"{}\char`\"{}).\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a5ed6433e70f83c493f4e3ae3ca6d713a}\label{classdtp15__todolist_1_1_todo_a5ed6433e70f83c493f4e3ae3ca6d713a}} 
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!PrintFoot@{PrintFoot}}
+\index{PrintFoot@{PrintFoot}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{PrintFoot()}{PrintFoot()}}
+{\footnotesize\ttfamily static void dtp15\+\_\+todolist.\+Todo.\+Print\+Foot (\begin{DoxyParamCaption}\item[{bool}]{verbose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Print\+Foot}} method. Takes bool argument, calls \textquotesingle{}Print\+Head\+Or\+Foot\textquotesingle{} with two bool arguments (head\+: false).  
+
+
+\begin{DoxyParams}{Parameters}
+{\em verbose} & bool.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a3d8a159f390893fe3519e69af42fb18f}\label{classdtp15__todolist_1_1_todo_a3d8a159f390893fe3519e69af42fb18f}} 
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!PrintHead@{PrintHead}}
+\index{PrintHead@{PrintHead}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{PrintHead()}{PrintHead()}}
+{\footnotesize\ttfamily static void dtp15\+\_\+todolist.\+Todo.\+Print\+Head (\begin{DoxyParamCaption}\item[{bool}]{verbose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Print\+Head}} method. Takes bool argument, calls \textquotesingle{}Print\+Head\+Or\+Foot\textquotesingle{} with two bool arguments (head\+: true).  
+
+
+\begin{DoxyParams}{Parameters}
+{\em verbose} & bool.\\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classdtp15__todolist_1_1_todo_ad1ec159e9fa1a74cf0589065bc1f1fed}\label{classdtp15__todolist_1_1_todo_ad1ec159e9fa1a74cf0589065bc1f1fed}} 
-static void {\bfseries Print\+Head\+Or\+Foot} (bool head, bool verbose)
-\end{DoxyCompactItemize}
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!PrintHeadOrFoot@{PrintHeadOrFoot}}
+\index{PrintHeadOrFoot@{PrintHeadOrFoot}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{PrintHeadOrFoot()}{PrintHeadOrFoot()}}
+{\footnotesize\ttfamily static void dtp15\+\_\+todolist.\+Todo.\+Print\+Head\+Or\+Foot (\begin{DoxyParamCaption}\item[{bool}]{head,  }\item[{bool}]{verbose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+{\bfseries{Print\+Head\+Or\+Foot}} method. Takes two arguments (bools), checks which one is true and prints to console. If \textquotesingle{}head\textquotesingle{} is true, prints a header to console. if \textquotesingle{}verbose\textquotesingle{} is true, prints a line demarcator (for task description) to console.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & bool.\\
+\hline
+{\em verbose} & bool.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a4a05d8f20e9c50f25c209923f04874f8}\label{classdtp15__todolist_1_1_todo_a4a05d8f20e9c50f25c209923f04874f8}} 
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!PrintTodoList@{PrintTodoList}}
+\index{PrintTodoList@{PrintTodoList}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{PrintTodoList()}{PrintTodoList()}}
+{\footnotesize\ttfamily static void dtp15\+\_\+todolist.\+Todo.\+Print\+Todo\+List (\begin{DoxyParamCaption}\item[{bool}]{alltasks = {\ttfamily false},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Print\+Todo\+List}} method. Takes two bool agruments (false by default), and calls other print-\/methods in class. If \textquotesingle{}alltasks\textquotesingle{} is true, prints all tasks in list. If \textquotesingle{}alltasks\textquotesingle{} is not true, only prints active tasks in list. If \textquotesingle{}verbose\textquotesingle{} is true (false by default), prints a line demarcator for task description.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em alltasks} & bool (default = false).\\
+\hline
+{\em verbose} & bool (default = false).\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_a7fbc9fa924727a4835d73b9b20c1cf6a}\label{classdtp15__todolist_1_1_todo_a7fbc9fa924727a4835d73b9b20c1cf6a}} 
+\index{dtp15\_todolist.Todo@{dtp15\_todolist.Todo}!StatusToString@{StatusToString}}
+\index{StatusToString@{StatusToString}!dtp15\_todolist.Todo@{dtp15\_todolist.Todo}}
+\doxysubsubsection{\texorpdfstring{StatusToString()}{StatusToString()}}
+{\footnotesize\ttfamily static string dtp15\+\_\+todolist.\+Todo.\+Status\+To\+String (\begin{DoxyParamCaption}\item[{int}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+{\bfseries{Status\+To\+String}} method. Takes argument integer, and converts it to a string representing \textquotesingle{}task\+Status\textquotesingle{}.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & integer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string (task status).
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -1,17 +1,17 @@
 \hypertarget{classdtp15__todolist_1_1_todo_1_1_todo_item}{}\doxysection{dtp15\+\_\+todolist.\+Todo.\+Todo\+Item Class Reference}
 \label{classdtp15__todolist_1_1_todo_1_1_todo_item}\index{dtp15\_todolist.Todo.TodoItem@{dtp15\_todolist.Todo.TodoItem}}
+
+
+{\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}}} subclass. Contains public methods, variables and a constructor for \textquotesingle{}to-\/do task\textquotesingle{} handling.   
+
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_1_1_todo_item_a2cc58de5be722ffd70e72da56cf37f8e}\label{classdtp15__todolist_1_1_todo_1_1_todo_item_a2cc58de5be722ffd70e72da56cf37f8e}} 
-{\bfseries Todo\+Item} (int priority, string task)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_1_1_todo_item_a4f47abb2e3da70da81bd07aacf2fae41}\label{classdtp15__todolist_1_1_todo_1_1_todo_item_a4f47abb2e3da70da81bd07aacf2fae41}} 
-{\bfseries Todo\+Item} (string todo\+Line)
-\item 
-\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_1_1_todo_item_ad0f617cffbbe5a9634d13c05c3d6cad1}\label{classdtp15__todolist_1_1_todo_1_1_todo_item_ad0f617cffbbe5a9634d13c05c3d6cad1}} 
-void {\bfseries Print} (bool verbose=false, int i=0)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item_ac2b46cae9bb2a6f050f89835f2015642}{Todo\+Item}} (string todoline)
+\begin{DoxyCompactList}\small\item\em {\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}}} constructor. Takes argument string, splits it into array, and sets variables accordingly.  \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item_ad0f617cffbbe5a9634d13c05c3d6cad1}{Print}} (bool verbose=false, int i=0)
+\begin{DoxyCompactList}\small\item\em {\bfseries{Print}} method. Console print method for class object \textquotesingle{}\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}\textquotesingle{}. Takes two argument, bool and integer, if bool is \textquotesingle{}true\textquotesingle{} it also print \textquotesingle{}task\+Description\textquotesingle{}.  \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,6 +27,47 @@ string {\bfseries task\+Name}
 \mbox{\Hypertarget{classdtp15__todolist_1_1_todo_1_1_todo_item_a161941a04fa9acd1d64edc69522ef052}\label{classdtp15__todolist_1_1_todo_1_1_todo_item_a161941a04fa9acd1d64edc69522ef052}} 
 string {\bfseries task\+Description}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+{\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}}} subclass. Contains public methods, variables and a constructor for \textquotesingle{}to-\/do task\textquotesingle{} handling.  
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_1_1_todo_item_ac2b46cae9bb2a6f050f89835f2015642}\label{classdtp15__todolist_1_1_todo_1_1_todo_item_ac2b46cae9bb2a6f050f89835f2015642}} 
+\index{dtp15\_todolist.Todo.TodoItem@{dtp15\_todolist.Todo.TodoItem}!TodoItem@{TodoItem}}
+\index{TodoItem@{TodoItem}!dtp15\_todolist.Todo.TodoItem@{dtp15\_todolist.Todo.TodoItem}}
+\doxysubsubsection{\texorpdfstring{TodoItem()}{TodoItem()}}
+{\footnotesize\ttfamily dtp15\+\_\+todolist.\+Todo.\+Todo\+Item.\+Todo\+Item (\begin{DoxyParamCaption}\item[{string}]{todoline }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+{\bfseries{\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}}} constructor. Takes argument string, splits it into array, and sets variables accordingly.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em todoline} & string.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdtp15__todolist_1_1_todo_1_1_todo_item_ad0f617cffbbe5a9634d13c05c3d6cad1}\label{classdtp15__todolist_1_1_todo_1_1_todo_item_ad0f617cffbbe5a9634d13c05c3d6cad1}} 
+\index{dtp15\_todolist.Todo.TodoItem@{dtp15\_todolist.Todo.TodoItem}!Print@{Print}}
+\index{Print@{Print}!dtp15\_todolist.Todo.TodoItem@{dtp15\_todolist.Todo.TodoItem}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void dtp15\+\_\+todolist.\+Todo.\+Todo\+Item.\+Print (\begin{DoxyParamCaption}\item[{bool}]{verbose = {\ttfamily false},  }\item[{int}]{i = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+{\bfseries{Print}} method. Console print method for class object \textquotesingle{}\mbox{\hyperlink{classdtp15__todolist_1_1_todo_1_1_todo_item}{Todo\+Item}}\textquotesingle{}. Takes two argument, bool and integer, if bool is \textquotesingle{}true\textquotesingle{} it also print \textquotesingle{}task\+Description\textquotesingle{}.  
+
+
+\begin{DoxyParams}{Parameters}
+{\em verbose} & bool (default = false).\\
+\hline
+{\em i} & integer (default = 0).\\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
