@@ -1,0 +1,27 @@
+﻿# To-Do Remarks
+-GENERAL:
+	. Continue code refactoring.
+	. Continue code commenting.
+	. Add more error-handling.
+	. Add unit-testing.
+
+-PROGRAM.cs:
+	. NYI: Create a new file of 'most-used' strings (eg. in PrintHelp and AppStartUp) to read from.
+	. NYI: Add option to show directory of all ".lis" files to load, save, or delete.
+	. TBD: Add save, load to specific files function.
+	. TBD: Rework new "task name" command so it can register a task name within citation marks.
+	. TBD: Rework do-while loop with switch cases and elaborate MyIO-methods to better suit that.
+
+-TODO.cs:
+	. NYI: Add new method 'ListSorter' to sort objects in class according to 'taskStatus' and then 'taskPriority'.
+	. NYI: Add new "FindTaskIndex" method for use in other methods.
+	. TBD: Make 'todoFileName' a public attribute for use in other methods.
+	. TBD: Rework 'ReadListFromFile' method so it can read lists from different .lis files.
+	. TBD: Rework 'SaveListToFile' method so it can write lists from different .lis files.
+	. NYI: Add error check to 'SaveListToFile' method with try-catch.
+	. TBD: Change variable name 'verbose' on print-methods for ease of understanding.
+	. TBD: Change string argument 'taskname' (for 'DeleteTask' and 'ChangeTaskStatus' methods) to an integer for 'taskindex' instead.
+
+-MYIO.cs:
+	. TBD: Rework method algorithms for improved user input features (eg. switch cases).
+	. TBD: Rework string split (for 'ReadCommand' method) so it does not split sentences inside citation marks.
