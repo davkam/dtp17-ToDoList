@@ -72,5 +72,27 @@ namespace dtp15_todolist
         {
             if (value < min || value > max) throw new Exception("Index out of range!");
         }
+        public static int SetIndex(string consoleOutput, int min, int max)
+        {
+            int taskIndex = -1;
+        startIndexSet:
+            Console.Write(consoleOutput);
+            try
+            {
+                taskIndex = Int32.Parse(Console.ReadLine()) - 1;
+                MyIO.CheckIndexRange(taskIndex, min, max);
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine(". ERROR! Input string not in correct format!");
+                goto startIndexSet;
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine(". ERROR! Index out of range!");
+                goto startIndexSet;
+            }
+            return taskIndex;
+        }
     }
 }
