@@ -16,16 +16,19 @@ namespace dtp15_todolist
         {
             Console.WriteLine(".................COMMANDS.................\r\n");
             Console.WriteLine($"- {"help", -30}List all commands.");
-            Console.WriteLine($"- {"list...    -d", -30}List all active tasks in to-do list, with or without description (-d).");
-            Console.WriteLine($"  {"    ...all -d", -30}List all tasks in to-do list, with or without description (-d).");
-            Console.WriteLine($"  {"    ...\"task name\"",-30}List specific task in to-do list with description.");
-            Console.WriteLine($"  {"    ...help",-30}Show possible \"list\" commands.");
+            Console.WriteLine($"- {"list...     -d", -30}List all active tasks in to-do list, with or without description (-d).");
+            Console.WriteLine($"  {"     ...all -d", -30}List all tasks in to-do list, with or without description (-d).");
+            Console.WriteLine($"  {"     ...\"task name\"",-30}List specified task in to-do list with description.");
+            Console.WriteLine($"  {"     ...help",-30}Show possible \"list\" commands.");
             Console.WriteLine($"- {"status...",-30}");
-            Console.WriteLine($"  {"    ...change",-30}Show all tasks, and change status on chosen task.");
-            Console.WriteLine($"  {"    ...\"task name\"",-30}Change status of specific task.");
-            Console.WriteLine($"  {"    ...\"task name\" \"status\"",-30}Change status of specific task to active, waiting or ready.");
+            Console.WriteLine($"  {"     ...change",-30}Show all tasks, and change status on chosen task.");
+            Console.WriteLine($"  {"     ...\"task name\"",-30}Change status of specified task.");
+            Console.WriteLine($"  {"     ...\"task name\" \"status\"",-30}Change status of specified task to active, waiting or ready.");
             Console.WriteLine($"- {"new...", -30}Add new task to to-do list.");
-            Console.WriteLine($"  {"    ...\"task name\"",-30}Add new task to to-do list, and initialize with a task name"); // delete, clear, change 
+            Console.WriteLine($"  {"     ...\"task name\"",-30}Add new task to to-do list, and initialize with specified task name");
+            Console.WriteLine($"- {"delete...",-30}Show all tasks, and delete chosen task.");
+            Console.WriteLine($"  {"     ...all",-30}Delete all tasks, and clear to-do list.");
+            Console.WriteLine($"  {"     ...\"task name\"",-30}Delete specified task in to-do list."); 
             Console.WriteLine($"- {"load",-30}Load to-do list from \"/todo.lis\".");
             Console.WriteLine($"- {"save", -30}Save current to-do list to \"/todo.lis\".");
             Console.WriteLine($"- {"quit", -30}Quit and save to-do list.");
@@ -111,6 +114,24 @@ namespace dtp15_todolist
                         Todo.AddNewTask(commandLines[1]);
                     }
                     else Todo.AddNewTask();
+                }
+                else if (MyIO.CheckFirstCommand(commandLines, "delete"))
+                {
+                    if (commandLines.Length <= 1)
+                    {
+                        Todo.DeleteTask(false);
+                    }
+                    else if (MyIO.CheckAdditionalCommands(commandLines, "all") && commandLines.Length <= 2)
+                    {
+                        Todo.DeleteTask(true);
+                    }
+                    else if (MyIO.CheckCommandTaskName(commandLines, taskNameCommands) && commandLines.Length <= 2)
+                    {
+                        int taskIndex = MyIO.CheckCommandTaskIndex(commandLines, taskNameCommands);
+
+                        Todo.DeleteTask(false, Todo.todoList[taskIndex].taskName);
+                    }
+                    else UnknownCommand(commandLines);
                 }
                 else if (MyIO.CheckFirstCommand(commandLines, "load"))
                 {
