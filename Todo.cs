@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace dtp15_todolist
 {
@@ -166,24 +167,7 @@ namespace dtp15_todolist
             Console.Write(". Set task description: ");
             string? newTaskDescription = Console.ReadLine();
 
-        setPrio:
-            Console.Write(". Set task priority level (1-4): ");
-            int newTaskPriority;
-            try
-            {
-                newTaskPriority = Int32.Parse(Console.ReadLine());
-                MyIO.CheckIndexRange(newTaskPriority, 1, 4);
-            }
-            catch (System.FormatException)
-            {
-                Console.WriteLine(". ERROR! Input not in correct format!");
-                goto setPrio;
-            }
-            catch (System.Exception)
-            {
-                Console.WriteLine(". ERROR! Index out of range!");
-                goto setPrio;
-            }
+            int newTaskPriority = MyIO.SetIndex(". Set task priority level (1-4): ", 1, 4);
 
             Console.WriteLine($". Add new task?\r\n\r\n{"TASK:",-20}{newTaskName}\r\n{"TASK DESCRIPTION:",-20}{newTaskDescription}\r\n{"TASK PRIORITY",-20}{newTaskPriority}\r\n{"TASK STATUS:",-20}{StatusToString(newTaskStatus)} (Default)\r\n");
         finalTask:
@@ -209,6 +193,69 @@ namespace dtp15_todolist
             AddTaskNamesToCommand();
         taskDone:;
         }
+        public static void DeleteTask(bool alltask, string taskname = "")
+        {
+            ConsoleKeyInfo keyPressed;
+            int taskIndex;
+            if (alltask)
+            {
+            startClearAll:
+                Console.WriteLine(". Clear entire list? Press Enter to accept, or Escape to quit!");
+                keyPressed = Console.ReadKey(true);
+                if (keyPressed.Key == ConsoleKey.Enter)
+                {
+                    todoList.Clear();
+                    Console.WriteLine(". To-Do list successfully cleared! To save changes use \"save\" command.");
+
+                    Program.taskNameCommands = new string[todoList.Count];
+                    AddTaskNamesToCommand();
+                }
+                else if (keyPressed.Key == ConsoleKey.Escape)
+                {
+                    Console.WriteLine(". To-Do list was not cleared!");
+                }
+                else
+                {
+                    Console.WriteLine($". Unknown key: {keyPressed.Key}");
+                    goto startClearAll;
+                }
+            }
+            else if (alltask == false && taskname == "")
+            {
+                PrintTodoList(allTasks: true, verbose: false);
+
+                taskIndex = MyIO.SetIndex(". Which task would you like to delete?: #", 0, todoList.Count - 1);
+
+                taskname = todoList[taskIndex].taskName;
+                todoList.RemoveAt(taskIndex);
+                
+                Console.WriteLine($". Task \"{taskname}\" was successfully deleted! To save changes use \"save\" command.");
+
+                Program.taskNameCommands = new string[todoList.Count];
+                AddTaskNamesToCommand();
+            }
+            else if (alltask == false && taskname != "")
+            {
+                try 
+                { 
+                    taskIndex = todoList.FindIndex(todoItem => todoItem.taskName.ToLower() == taskname.ToLower());
+                    todoList.RemoveAt(taskIndex);
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine($". ERROR! Index was out of range! Could not find \"{taskname}\" in list.");
+                }
+
+                Console.WriteLine($". Task \"{taskname}\" was successfully deleted! To save changes use \"save\" command.");
+
+                Program.taskNameCommands = new string[todoList.Count];
+                AddTaskNamesToCommand();
+            }
+            else
+            {
+                Console.WriteLine(". No task was deleted.");
+            }
+        }
         public static void ChangeTaskStatus(string name = "", int status = 0)
         {
             int taskIndex;
@@ -220,23 +267,7 @@ namespace dtp15_todolist
                 PrintTodoList(allTasks: true, verbose: false);
 
             pickTask:
-                Console.Write(". Which task would you like to change status on?: #");
-                try
-                {
-                    taskIndex = Int32.Parse(Console.ReadLine());
-                    MyIO.CheckIndexRange(taskIndex, 1, todoList.Count);
-                }
-                catch (System.FormatException)
-                {
-                    Console.WriteLine(". ERROR! Input string not in correct format!");
-                    goto pickTask;
-                }
-                catch (System.Exception)
-                {
-                    Console.WriteLine(". ERROR! Index out of range!");
-                    goto pickTask;
-                }
-
+                taskIndex = MyIO.SetIndex(". Which task would you like to change status on?: #", 1, todoList.Count - 1);
                 setStatus = SetTaskStatus(todoList[taskIndex - 1].taskName);
 
             finalCheck:
@@ -303,7 +334,7 @@ namespace dtp15_todolist
 
             Console.WriteLine($". Change status of \"{taskName}\" to... (Pick an option, or press Escape to quit!)");
             Console.WriteLine("1. ACTIVE\r\n2. WAITING\r\n3. READY");
-
+        startSetStatus:
             keyPressed = Console.ReadKey(true);
             if (keyPressed.Key == ConsoleKey.D1 || keyPressed.Key == ConsoleKey.NumPad1)
             {
@@ -325,6 +356,7 @@ namespace dtp15_todolist
             else
             {
                 Console.WriteLine($". ERROR! \"{keyPressed.Key}\" not a valid option.");
+                goto startSetStatus;
             }
             return returnInt;
         }
