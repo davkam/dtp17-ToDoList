@@ -23,17 +23,22 @@
 		.Changed "list" command function to only show active tasks. 
 		.Changed "list all" command function to show all tasks. 
 		.Added "load" command function to program.
+		.Added "status set" command to program.
+		.Added "status 'status' 'task name'" command to program.
+		.Moved "AddNewTask" method to Todo class.
 	-MyIO.cs:
 		.Reworked "ReadCommand" method to return string array.
 		.Reworked "Equals" method to "Contains" to look for specific string in array.
 		.Reworked "Contains" method to "CheckFirstCommand" for a more precise functionality.
 		.Added "CheckAdditionalCommands" method to furhter elaborate the command tree.
+		.Added "CheckIndexRange" method for range check.
 	-ToDo.cs:
 		.Moved "PrintHelp" method to Program class.
 		.Reworked "ReadListFromFile" method, added file check and file creation.
 		.Added new "SaveListToFile" static method.
 		.Changed "PrintTodoList" method to better incorporate some command features.
 		.Changed "PrintHeadOrFoot" and "Print" methods to display index number of list item, and changed layout.
+		.Added "ChangeTaskStatus" method to change task status through the command line.
 
 -To-Do's.
 	-General:
@@ -50,13 +55,13 @@
 [NYI]	.Add "save" command function to program. (READY)
 [TBD]	.Update "quit" command function to save file before shutdown. (READY)
 [NYI]	.Add "load" command function to program. (READY)
-[NYI]	.Add set task status command function to program. (WAITING)
+[NYI]	.Add set task status command features to program. (READY)
 [NYI]	.Add "AppRestart" static method to program. (READY)
 	-MyIO.cs:
 [TBD]	.Rework "ReadCommands" method to return string array. (READY)
 [TBD]	.Rework MyIO methods to better suit program functionality. (READY) 
 [NYI]	.Add MyIO methods to better suit program functionality. (READY)
-[NYI]	.Create a more elaborate method for better command functionality. (WAITING)
+[NYI]	.Create more elaborate methods for better command functionality. (WAITING)
 	-ToDo.cs:
 [TBD]	.Move "PrintHelp" method to Program class. (READY)
 [TBD]	.Rework "ReadListFromFile" method, add file check and file creation. (READY)
@@ -64,3 +69,4 @@
 [TBD]	.Change "PrintTodoList" method to better incorporate some command features. (READY)
 [TBD]	.Change "PrintHeadOrFoot" and "Print" methods to display index number of list item, and changed layout. (READY)
 [NYI]	.Add "ListSorter" method to sort tasks first according to status, then priority. (WAITING)
+[NYI]	.Add "ChangeTaskStatus" method to change status of tasks through the command. (READY)
