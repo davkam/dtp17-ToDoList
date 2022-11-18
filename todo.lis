@@ -1,4 +1,20 @@
-1|1|köpa kaffe|Willys? Billigaste!
-1|1|köpa toapapper|Willys? Extra papper!
-2|3|köpa bordslampa|IKEA art. nr. 905.108.94
-2|2|rensa skrivbordet|NEeeeejjj!
+1|1|codeRefactor|Refactor code.
+1|2|codeComment|Comment remarks.
+3|3|codeDocument|Document summaries for classes and methods.
+1|2|codeError|Add more error-handling.
+2|3|unitTest|Add unit testing to methods.
+2|4|stringFile|Create new file of 'most-used' strings.
+2|3|showDirectory|Add option to show directory of files.
+2|3|fileSaveLoad|Add option to save or load to specific file.
+1|1|newTaskName|Improve new "task name" function.
+2|3|doWhileLoop|Rework do-while loops into switch cases.
+2|2|listSorter|Add ListSorter method.
+2|2|findTaskIndex|Add FindTaskIndex method.
+2|3|todoFileName|Make 'todoFileName' public attribute.
+2|3|readListFromFile|Rework method 'ReadListFromFile'.
+2|3|saveListToFile|Rework method 'SaveListToFile'.
+2|2|errorSaveList|Add error check to 'SaveListToFile'.
+2|4|boolVerbose|Change variable name.
+2|3|stringToInteger|Change string arg. 'taskname' on some methods to int 'taskindex'.
+2|3|myIOMethods|Rework MyIO methods with better algorithms.
+1|1|readCommand|Rework 'ReadCommand' method to not split words in "".
