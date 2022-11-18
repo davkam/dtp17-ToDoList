@@ -116,8 +116,8 @@ namespace dtp15_todolist
                 {
                     if (MyIO.CheckAdditionalCommands(commandLines, "all") && commandLines.Length <= 3)
                     {
-                        if (MyIO.CheckAdditionalCommands(commandLines, "-d")) Todo.PrintTodoList(allTasks: true, verbose: true);
-                        else Todo.PrintTodoList(allTasks: true, verbose: false);
+                        if (MyIO.CheckAdditionalCommands(commandLines, "-d")) Todo.PrintTodoList(alltasks: true, verbose: true);
+                        else Todo.PrintTodoList(alltasks: true, verbose: false);
                     }
                     else if (MyIO.CheckCommandTaskName(commandLines, taskNameCommands) && commandLines.Length <= 2)
                     {
@@ -138,8 +138,8 @@ namespace dtp15_todolist
                     }
                     else if (MyIO.CheckAdditionalCommands(commandLines, "-d") || commandLines.Length <= 1)
                     {
-                        if (MyIO.CheckAdditionalCommands(commandLines, "-d")) Todo.PrintTodoList(allTasks: false, verbose: true);
-                        else Todo.PrintTodoList(allTasks: false, verbose: false);
+                        if (MyIO.CheckAdditionalCommands(commandLines, "-d")) Todo.PrintTodoList(alltasks: false, verbose: true);
+                        else Todo.PrintTodoList(alltasks: false, verbose: false);
                     }
                     else UnknownCommand(commandLines);
                 }
