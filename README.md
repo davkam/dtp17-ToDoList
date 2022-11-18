@@ -1,14 +1,8 @@
-# dtp15_todolist
+# dtp17_todolist (hemtentamen)
 
-[**DTP inlämningsuppgift 2**](http://moodle.molk.se/mod/assign/view.php?id=3775). 
-
-Innan du kör programmet måste du kopiera (eller flytta) ner filen todo.lis till
-filkatalogen `\bin\Debug\net6.0`, i Git Bash:
-
-      $ cp todo.lis \bin\Debug\net6.0
-
-(eller mv).
-
-# Hemtentamen 15-18 november
-
-Instruktioner på [Moodle](http://moodle.molk.se/mod/assign/view.php?id=3796).
+-INFO:
+    . Original repo: "git@github.com:TomasKindahl/dtp15_todolist.git".
+    . To-Do List: A task storage program, creates, views and saves To-Do tasks.
+    . Read 'todolist.txt' for upcoming changes and features (or use todo.lis in app).
+    . Read 'changelog.txt' for changes made on original repo.
+    . To see to-do remarks in app, move todo.lis to dir '\bin\Debug\net6.0'.
