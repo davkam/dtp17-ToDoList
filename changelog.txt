@@ -29,6 +29,7 @@
 		.Added "list 'task name'" command.
 		.Added public string array of task name commands to use with MyIO methods.
 		.Added welcome screen to start up.
+		.Reworked "status" commands.
 	-MyIO.cs:
 		.Reworked "ReadCommand" method to return string array.
 		.Reworked "Equals" method to "Contains" to look for specific string in array.
@@ -45,6 +46,8 @@
 		.Changed "PrintHeadOrFoot" and "Print" methods to display index number of list item, and changed layout.
 		.Added "ChangeTaskStatus" method to change task status through the command line.
 		.Added "TaskNamesToCommand" method to write task names to command array.
+		.Reworked "ChangeTaskStatus" & "AddNewTask" methods.
+		.Added "SetTaskStatus" method.
 
 -To-Do's.
 	-General:
@@ -66,6 +69,7 @@
 [NYI]	.Add public string array of task name commands to use with MyIO methods. (READY)
 [NYI]	.Add "delete", "clear", "change" commands to program. (WAITING)
 [NYI]	.Add a welcome screen to start up. (READY)
+[TBD]	.Rework status commands. (READY)
 	-MyIO.cs:
 [TBD]	.Rework "ReadCommand" method to return string array. (READY)
 [TBD]	.Rework MyIO methods to better suit program functionality. (READY) 
@@ -82,3 +86,5 @@
 [NYI]	.Add "ListSorter" method to sort tasks first according to status, then priority. (WAITING)
 [NYI]	.Add "ChangeTaskStatus" method to change status of tasks through the command. (READY)
 [NYI]	.Add "TaskNamesToCommand" method to write task names to command array. (READY)
+[TBD]	.Add "SetTaskStatus" method. (READY)
+[NYI]	.Rework "ChangeTaskStatus" & "AddNewTask" methods (READY) 
