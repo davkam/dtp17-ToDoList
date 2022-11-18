@@ -9,7 +9,7 @@
 	. NYI: Create a new file of 'most-used' strings (eg. in PrintHelp and AppStartUp) to read from.
 	. NYI: Add option to show directory of all ".lis" files to load, save, or delete.
 	. TBD: Add save, load to specific files function.
-	. TBD: Rework new "task name" command so it can register a task name within citation marks.
+	. TBD: Rework command input so it can register names within citation marks. (DONE)
 	. TBD: Rework do-while loop with switch cases and elaborate MyIO-methods to better suit that.
 
 -TODO.cs:
@@ -24,4 +24,5 @@
 
 -MYIO.cs:
 	. TBD: Rework method algorithms for improved user input features (eg. switch cases).
-	. TBD: Rework string split (for 'ReadCommand' method) so it does not split sentences inside citation marks.
+	. TBD: Rework string split (for 'ReadCommand' method) so it does not split sentences inside citation marks. (DONE)
+	. NYI: Add an Error-Check to ReadCommand method. 
