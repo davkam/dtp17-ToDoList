@@ -19,8 +19,7 @@ namespace dtp15_todolist
         }
         static public bool CheckFirstCommand(string[] actualCommand, string expectedCommand)
         {
-            actualCommand[0] = actualCommand[0].ToLower();
-            if (actualCommand[0] == expectedCommand) return true;
+            if (actualCommand[0].ToLower() == expectedCommand) return true;
             else return false;
         }
         static public bool CheckAdditionalCommands(string[] actualCommand, string expectedCommand)
@@ -36,6 +35,38 @@ namespace dtp15_todolist
                 else returnBool = false;
             }
             return returnBool;
+        }
+        static public bool CheckCommandTaskName(string[] actualCommand, string[] expectedCommand)
+        {
+            bool returnBool = false;
+            for (int x = 0; x < actualCommand.Length; x++)
+            {
+                for (int y = 0; y < expectedCommand.Length; y++)
+                {
+                    if (actualCommand[x] == expectedCommand[y])
+                    {
+                        returnBool = true;
+                        break;
+                    }
+                }
+            }
+            return returnBool;
+        }
+        static public int CheckCommandTaskIndex(string[] actualCommand, string[] expectedCommand)
+        {
+            int returnInt = 0;
+            for (int x = 0; x < actualCommand.Length; x++)
+            {
+                for (int y = 0; y < expectedCommand.Length; y++)
+                {
+                    if (actualCommand[x] == expectedCommand[y])
+                    {
+                        returnInt = y;
+                        break;
+                    }
+                }
+            }
+            return returnInt;
         }
         static public void CheckIndexRange(int value, int min, int max)
         {
