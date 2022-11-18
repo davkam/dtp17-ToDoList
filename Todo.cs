@@ -302,10 +302,8 @@ namespace dtp15_todolist
                 }
                 else goto finalTask;
             }
-
             Program.taskNameCommands = new string[todoList.Count];
             AddTaskNamesToCommand();
-
         taskDone:;
         }
 
