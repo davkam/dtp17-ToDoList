@@ -13,7 +13,7 @@ namespace dtp15_todolist
     /// <b>MyIO</b> class.
     /// Contains public methods for use in other classes.
     /// </summary>
-        // TBD: rework method algorithms for improved user input features.
+        // TBD: rework method algorithms to improve search algorithms with switch-cases.
     class MyIO
     {
         /// <summary>
@@ -30,18 +30,26 @@ namespace dtp15_todolist
 
             if (commandString.Contains('"'))
             {
-                int firstIndex = commandString.IndexOf('"');
-                int lastIndex = commandString.LastIndexOf('"'); 
-                int indexDiff = lastIndex - firstIndex;
-                string newCommand1 = commandString.Substring(0, firstIndex - 1).Trim();
-                string newCommand2 = commandString.Substring(firstIndex + 1, indexDiff - 1).Trim();
-                string newCommand3 = commandString.Substring(lastIndex + 1).Trim();
-                if (newCommand3 != "")
+                try
                 {
-                    commandArray = new string[3] { newCommand1, newCommand2, newCommand3 };
-                }
-                else commandArray = new string[2] { newCommand1, newCommand2 };
+                    int firstIndex = commandString.IndexOf('"');
+                    int lastIndex = commandString.LastIndexOf('"');
+                    int indexDiff = lastIndex - firstIndex;
 
+                    string newCommand1 = commandString.Substring(0, firstIndex - 1).Trim();
+                    string newCommand2 = commandString.Substring(firstIndex + 1, indexDiff - 1).Trim();
+                    string newCommand3 = commandString.Substring(lastIndex + 1).Trim();
+
+                    if (newCommand3 != "")
+                    {
+                        commandArray = new string[3] { newCommand1, newCommand2, newCommand3 };
+                    }
+                    else commandArray = new string[2] { newCommand1, newCommand2 };
+                }
+                catch (System.ArgumentOutOfRangeException) 
+                {
+                    commandArray = commandString.Split(' ');
+                }
             }
             else
             {
