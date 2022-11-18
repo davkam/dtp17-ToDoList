@@ -2,9 +2,17 @@
 
 namespace dtp15_todolist
 {
+    /// <summary>
+    /// <b>Program</b> Class. 
+    /// Contains public methods and variables, including 'Main' where application starts.
+    /// </summary>
     class Program
     {
         public static string[] taskNameCommands;
+        /// <summary>
+        /// <b>PrintWelcome</b> method.
+        /// Prints a set of strings (app start-up messages) to console.
+        /// </summary>
         public static void PrintWelcome()
         {
             Console.WriteLine("..................ABOUT...................\r\n");
@@ -12,6 +20,10 @@ namespace dtp15_todolist
             Console.WriteLine(". This app was created for educational purposes.");
             Console.WriteLine(". To start off, enter the commands given below.\r\n");
         }
+        /// <summary>
+        /// <b>PrintHelp</b> method.
+        /// Prints a set of strings (app 'help' commands) to console.
+        /// </summary>
         public static void PrintHelp()
         {
             Console.WriteLine(".................COMMANDS.................\r\n");
@@ -34,18 +46,36 @@ namespace dtp15_todolist
             Console.WriteLine($"- {"quit", -30}Quit and save to-do list.");
             Console.WriteLine();
         }
-        public static void AppRestart()
-        {
-            Process.Start("dtp15_todolist.exe");
-            Process.GetCurrentProcess().Kill();
-        }
+        /// <summary>
+        /// <b>UnknownCommand</b> method.
+        /// Takes argument string array, converts it into a string and prints it.
+        /// Used with 'Main' method to print unknown user input commands.
+        /// </summary>
+        /// <param name="commandInput">string array</param>
         public static void UnknownCommand(string[] commandInput)
         {
             string commandString = "";
             foreach (string command in commandInput) commandString += command + " ";
             Console.WriteLine($"Unknown command: {commandString}");
         }
-
+        /// <summary>
+        /// <b>AppRestart</b> method.
+        /// Restarts application by starting new process and terminating current process.
+        /// </summary>
+        public static void AppRestart()
+        {
+            try { Process.Start("dtp15_todolist.exe"); }
+            catch (System.ComponentModel.Win32Exception) 
+            {
+                Console.WriteLine(". ERROR: Could not open file \"dtp15_todolist.exe\".");
+            }
+            Process.GetCurrentProcess().Kill();     
+        }
+        /// <summary>
+        /// <b>Main</b> method.
+        /// Application starts here, runs initial tasks then enters loop with conditional statements.
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             Console.WriteLine("................TO-DO LIST................\r\n");
