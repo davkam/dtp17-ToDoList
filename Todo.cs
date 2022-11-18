@@ -9,7 +9,7 @@ namespace dtp15_todolist
     public class Todo
     {
         public static List<TodoItem> todoList = new List<TodoItem>();
-        
+
         public const int Active = 1;
         public const int Waiting = 2;
         public const int Ready = 3;
@@ -37,7 +37,7 @@ namespace dtp15_todolist
             public void Print(bool verbose = false, int i = 0)
             {
                 string statusString = StatusToString(taskStatus);
-                Console.Write($"|{(i+1) + ". " + taskName,-20}|{statusString,-12}|{taskPriority,-6}|");
+                Console.Write($"|{"#" + (i + 1) + ". " + taskName,-20}|{statusString,-12}|{taskPriority,-6}|");
                 if (verbose)
                     Console.WriteLine($"{taskDescription,-40}|");
                 else
@@ -139,6 +139,173 @@ namespace dtp15_todolist
                 }
             }
             PrintFoot(verbose);
+        }
+        public static void AddNewTask(string taskName = "")
+        {
+            ConsoleKeyInfo keyPressed;
+        setTask:
+            int newTaskStatus = Todo.Waiting;
+            string newTaskName;
+            if (taskName == "")
+            {
+                Console.Write(". Set new task name: ");
+                newTaskName = Console.ReadLine();
+            }
+            else
+            {
+                newTaskName = taskName;
+                Console.WriteLine($". New task name set to \"{newTaskName}\".");
+            }
+            Console.Write(". Set task description: ");
+            string? newTaskDescription = Console.ReadLine();
+
+        setPrio:
+            Console.Write(". Set task priority level (1-4): ");
+            int newTaskPriority;
+            try
+            {
+                newTaskPriority = Int32.Parse(Console.ReadLine());
+                if (newTaskPriority < 1 || newTaskPriority > 4)
+                {
+                    Console.WriteLine(". INCORRECT! Input out of range!");
+                    goto setPrio;
+                }
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine(". INCORRECT! Input not in correct format (1-4).");
+                goto setPrio;
+            }
+
+            Console.WriteLine($". Add new task?\r\n\r\n{"TASK:",-20}{newTaskName}\r\n{"TASK DESCRIPTION:",-20}{newTaskDescription}\r\n{"TASK PRIORITY",-20}{newTaskPriority}\r\n{"TASK STATUS:",-20}{Todo.StatusToString(newTaskStatus)} (Default)\r\n");
+        finalTask:
+            Console.WriteLine(". Press Enter to add to list, Backspace to redo or Escape to quit new task!");
+            {
+                keyPressed = Console.ReadKey(true);
+                if (keyPressed.Key == ConsoleKey.Enter)
+                {
+                    string taskLine = $"{newTaskStatus}|{newTaskPriority}|{newTaskName.Trim()}|{newTaskDescription.Trim()}";
+                    TodoItem newTask = new TodoItem(taskLine);
+                    todoList.Add(newTask);
+                    Console.WriteLine($". New task \"{newTaskName}\" successfully added to list!\r\n. To change task status, use command \"status\".");
+                }
+                else if (keyPressed.Key == ConsoleKey.Backspace) goto setTask;
+                else if (keyPressed.Key == ConsoleKey.Escape)
+                {
+                    Console.WriteLine($". New task \"{newTaskName}\" NOT created!");
+                    goto taskDone;
+                }
+                else goto finalTask;
+            }
+        taskDone:;
+        }
+        public static void ChangeTaskStatus(int status = 0, string name = "")
+        {
+            int taskIndex;
+            int setStatus = status;
+            ConsoleKeyInfo keyPressed;
+
+            if (name == "")
+            {
+                PrintTodoList(allTasks: true, verbose: false);
+
+            pickTask:
+                if (setStatus != 0) Console.Write($". Which task would you like to change status to \"{StatusToString(setStatus)}\"?: #");
+                else Console.Write(". Which task would you like to change status on?: #");
+
+                try
+                {
+                    taskIndex = Int32.Parse(Console.ReadLine());
+                    MyIO.CheckIndexRange(taskIndex, 1, todoList.Count);
+                    if (setStatus != 0) goto finalCheck;
+                }
+                catch (System.FormatException)
+                {
+                    Console.WriteLine(". ERROR! Input string not in correct format.");
+                    goto pickTask;
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine(". ERROR! Index out of range!");
+                    goto pickTask;
+                }
+
+            pickStatus:
+                Console.WriteLine($". Change status of \"{todoList[taskIndex - 1].taskName}\" to... (Pick an option, or press Escape to quit!)");
+                Console.WriteLine("1. Active\r\n2. Waiting\r\n3. Ready");
+
+                keyPressed = Console.ReadKey(true);
+                if (keyPressed.Key == ConsoleKey.D1 || keyPressed.Key == ConsoleKey.NumPad1) 
+                {
+                    setStatus = Active; goto finalCheck;
+                }
+                else if (keyPressed.Key == ConsoleKey.D2 || keyPressed.Key == ConsoleKey.NumPad2) 
+                {
+                    setStatus = Waiting; goto finalCheck;
+                }
+                else if (keyPressed.Key == ConsoleKey.D3 || keyPressed.Key == ConsoleKey.NumPad3) 
+                {
+                    setStatus = Ready; goto finalCheck;
+                }
+                else if (keyPressed.Key == ConsoleKey.Escape)
+                {
+                    Console.WriteLine($". Status of \"{todoList[taskIndex - 1].taskName}\" was NOT changed!"); goto endStatusChange;
+                }
+                else
+                {
+                    Console.WriteLine($". ERROR! \"{keyPressed.Key}\" not a valid option."); goto pickStatus;
+                }
+
+            finalCheck:
+                Console.WriteLine($". Finalize status change for \"{todoList[taskIndex - 1].taskName}\" to {StatusToString(setStatus)}?");
+                Console.WriteLine(". Press Enter to accept, Backspace to redo or Escape to quit changes.");
+
+                keyPressed = Console.ReadKey(true);
+                if (keyPressed.Key == ConsoleKey.Enter)
+                {
+                    todoList[taskIndex - 1].taskStatus = setStatus;
+                    Console.WriteLine($". Status of \"{todoList[taskIndex - 1].taskName}\" was changed to {StatusToString(setStatus)}.");
+                }
+                else if (keyPressed.Key == ConsoleKey.Backspace)
+                {
+                    setStatus = 0;
+                    goto pickTask;
+                }
+                else if (keyPressed.Key == ConsoleKey.Escape)
+                {
+                    Console.WriteLine($". Status of \"{todoList[taskIndex - 1].taskName}\" was NOT changed!");
+                }
+                else goto finalCheck;
+            endStatusChange:;
+            }
+
+            else if (status != 0 && name != "")
+            {
+                try
+                {
+                    taskIndex = todoList.FindIndex(todoItem => todoItem.taskName.ToLower() == name.ToLower());
+                acceptChange:
+                    Console.WriteLine($". Change status of \"{todoList[taskIndex].taskName}\" to {StatusToString(status)}? Press Enter to accept, or Escape to quit!");
+                    keyPressed = Console.ReadKey(true);
+
+                    if (keyPressed.Key == ConsoleKey.Enter)
+                    {
+                        todoList[taskIndex].taskStatus = status;
+                        Console.WriteLine($". Status of \"{todoList[taskIndex].taskName}\" was changed to {StatusToString(status)}.");
+                    }
+                    else if (keyPressed.Key == ConsoleKey.Escape)
+                    {
+                        Console.WriteLine($". Status of \"{todoList[taskIndex].taskName}\" was not changed.");
+                    }
+                    else goto acceptChange;
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine($". ERROR! Index was out of range. Could not find \"{name}\" in list.");
+                }
+            }
+
+            else Console.WriteLine(". ERROR! Unable to change status of task!");
         }
     }
 }
