@@ -61,9 +61,9 @@ namespace dtp15_todolist
             {
                 string statusString = StatusToString(taskStatus);
 
-                Console.Write($"|{"#" + (i + 1) + ". " + taskName,-20}|{statusString,-12}|{taskPriority,-6}|");
+                Console.Write($"|{"#" + (i + 1) + ". " + taskName,-25}|{statusString,-10}|{taskPriority,-5}|");
                 if (verbose)
-                    Console.WriteLine($"{taskDescription,-60}|");
+                    Console.WriteLine($"{taskDescription,-75}|");
                 else
                     Console.WriteLine();
             }
@@ -189,14 +189,14 @@ namespace dtp15_todolist
         {
             if (head)
             {
-                Console.Write($"|{"# NAME",-20}|{"STATUS",-12}|{"PRIO",-6}|");
+                Console.Write($"|{"# NAME",-25}|{"STATUS",-10}|{"PRIO",-5}|");
 
-                if (verbose) Console.WriteLine($"{"DESCRIPTION",-60}|");
+                if (verbose) Console.WriteLine($"{"DESCRIPTION",-75}|");
                 else Console.WriteLine();
             }
-            Console.Write("|--------------------|------------|------|");
+            Console.Write("|-------------------------|----------|-----|");
 
-            if (verbose) Console.WriteLine("------------------------------------------------------------|");
+            if (verbose) Console.WriteLine("---------------------------------------------------------------------------|");
             else Console.WriteLine();
         }
 
