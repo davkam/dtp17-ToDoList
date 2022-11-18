@@ -132,13 +132,13 @@ namespace dtp15_todolist
         }
         public static int SetIndex(string consoleOutput, int min, int max)
         {
-            int taskIndex = -1;
+            int index = -1;
         startIndexSet:
             Console.Write(consoleOutput);
             try
             {
-                taskIndex = Int32.Parse(Console.ReadLine()) - 1;
-                MyIO.CheckIndexRange(taskIndex, min, max);
+                index = Int32.Parse(Console.ReadLine()) - 1;
+                MyIO.CheckIndexRange(index, min, max);
             }
             catch (System.FormatException)
             {
@@ -150,7 +150,7 @@ namespace dtp15_todolist
                 Console.WriteLine(". ERROR! Index out of range!");
                 goto startIndexSet;
             }
-            return taskIndex;
+            return index;
         }
     }
 }
