@@ -269,7 +269,7 @@ namespace dtp15_todolist
             Console.Write(". Set task description: ");
             newTaskDescription = Console.ReadLine();
 
-            newTaskPriority = MyIO.SetIndex(". Set task priority level (1-4): ", 1, 4);
+            newTaskPriority = MyIO.SetIndex(". Set task priority level (1-4): ", 1, 4) + 1;
 
             Console.WriteLine($". Add new task?\r\n");
             Console.WriteLine($"- {"TASK:",-20}{newTaskName}\r\n- {"TASK DESCRIPTION:",-20}{newTaskDescription}\r\n- {"TASK PRIORITY:",-20}{newTaskPriority}\r\n- {"TASK STATUS:",-20}{StatusToString(newTaskStatus)} (Default)\r\n");
