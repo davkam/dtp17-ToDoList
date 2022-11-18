@@ -1,10 +1,5 @@
 ﻿#dtp17_todolist (hemtentamen)
 
--INFO.
-	.Original repo: "git@github.com:TomasKindahl/dtp15_todolist.git".
-	.To-Do List: A task storage program, creates, views and saves To-Do tasks.
-	.Added and upcoming changes and features from original repo are added to changelog.txt and todo.lis (as template).
-
 -CHANGELOG.
 	-GENERAL:
 		.Changed console output & input language to English, and changed console UI.
