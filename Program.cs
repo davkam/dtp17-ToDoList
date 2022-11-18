@@ -6,7 +6,7 @@ namespace dtp15_todolist
     /// <b>Program</b> Class. 
     /// Contains public methods and variables, including 'Main' where application starts.
     /// </summary>
-        // NYI: create a file of 'most-used' strings (eg. in PrintHelp and AppStartUp) in dir to read from.
+        // NYI: create a new file of 'most-used' strings (eg. in PrintHelp and AppStartUp) to read from.
     class Program
     {
         /// <summary>
@@ -104,8 +104,8 @@ namespace dtp15_todolist
             {
                     // do-while loop with conditional statements based on user input command:
                     // NYI: add option to show directory of all ".lis" files to load, save, or delete.
-                    // TBD: add save, load to specific files (create static methods if needed).
-                    // TBD: rework new "task name" command so it can register a task name with multiple words.
+                    // TBD: add save, load to specific files function.
+                    // TBD: rework new "task name" command so it can register a task name within citation marks.
                     // TBD: rework do-while loop with switch cases and elaborate MyIO-methods to better suit that.
                 commandLines = MyIO.ReadCommand("> ");
                 if (MyIO.CheckFirstCommand(commandLines, "help") && commandLines.Length <= 1)
