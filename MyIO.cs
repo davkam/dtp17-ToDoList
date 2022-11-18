@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +36,10 @@ namespace dtp15_todolist
                 else returnBool = false;
             }
             return returnBool;
+        }
+        static public void CheckIndexRange(int value, int min, int max)
+        {
+            if (value < min || value > max) throw new Exception("Index out of range!");
         }
     }
 }

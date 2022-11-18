@@ -5,83 +5,37 @@ namespace dtp15_todolist
 {
     class Program
     {
-        public static void AddNewTask(string taskName = "")
-        {
-            ConsoleKeyInfo keyPressed;
-        setTask:
-            int newTaskStatus = Todo.Waiting;
-            string newTaskName;
-            if (taskName == "")
-            {
-                Console.Write(". Set new task name: ");
-                newTaskName = Console.ReadLine();
-            }
-            else
-            {
-                newTaskName = taskName;
-                Console.WriteLine($". New task name set to \"{newTaskName}\".");
-            }
-            Console.Write(". Set task description: ");
-            string? newTaskDescription = Console.ReadLine();
-
-        setPrio:
-            Console.Write(". Set task priority level (1-4): ");
-            int newTaskPriority;
-            try
-            {
-                newTaskPriority = Int32.Parse(Console.ReadLine());
-                if (newTaskPriority < 1 || newTaskPriority > 4)
-                {
-                    Console.WriteLine(". INCORRECT! Input out of range!");
-                    goto setPrio;
-                }
-            }
-            catch (System.FormatException)
-            {
-                Console.WriteLine(". INCORRECT! Input not in correct format (1-4).");
-                goto setPrio;
-            }
-
-            Console.WriteLine($". Add new task?\r\n\r\n{"TASK:",-20}{newTaskName}\r\n{"TASK DESCRIPTION:",-20}{newTaskDescription}\r\n{"TASK PRIORITY",-20}{newTaskPriority}\r\n{"TASK STATUS:",-20}{Todo.StatusToString(newTaskStatus)} (Default)\r\n");
-        finalTask:
-            Console.WriteLine(". Press Enter to add to list, Backspace to redo or Escape to quit new task!");
-            {
-                keyPressed = Console.ReadKey(true);
-                if (keyPressed.Key == ConsoleKey.Enter)
-                {
-                    string taskLine = $"{newTaskStatus}|{newTaskPriority}|{newTaskName.Trim()}|{newTaskDescription.Trim()}";
-                    Todo.TodoItem newTask = new Todo.TodoItem(taskLine);
-                    Todo.todoList.Add(newTask);
-                    Console.WriteLine($". New task \"{newTaskName}\" successfully added to list!\r\n. To change task status, use command \"status\".");
-                }
-                else if (keyPressed.Key == ConsoleKey.Backspace) goto setTask;
-                else if (keyPressed.Key == ConsoleKey.Escape)
-                {
-                    Console.WriteLine($". New task \"{newTaskName}\" NOT created!");
-                    goto taskDone;
-                }
-                else goto finalTask;
-            }
-        taskDone:;
-        }
+        public string[] primaryCommands;
+        public string[] secondaryCommands;
+        public string[] tertiaryCommands;
         public static void PrintHelp()
         {
             Console.WriteLine(".................COMMANDS.................\r\n");
-            Console.WriteLine($"- {"help", -20}List all commands.");
-            Console.WriteLine($"- {"list...    (-d)", -20}List all active tasks in to-do list, with or without description.");
-            Console.WriteLine($"  {"    ...all (-d)", -20}List all tasks in to-do list, with or without description.");
-            Console.WriteLine($"  {"    ...help",-20}Show possible \"list\" commands.");
-            Console.WriteLine($"- {"new...", -20}Add new task to to-do list.");
-            Console.WriteLine($"  {"   ...\"task name\"", -20}Add new task to to-do list, and initialize with a task name.");
-            Console.WriteLine($"- {"load",-20}Load to-do list from \"/todo.lis\".");
-            Console.WriteLine($"- {"save", -20}Save current to-do list to \"/todo.lis\".");
-            Console.WriteLine($"- {"quit", -20}Quit and save to-do list.");
+            Console.WriteLine($"- {"help", -30}List all commands.");
+            Console.WriteLine($"- {"list...   (-d)", -30}List all active tasks in to-do list, with or without description.");
+            Console.WriteLine($"  {"   ...all (-d)", -30}List all tasks in to-do list, with or without description.");
+            Console.WriteLine($"  {"   ...help",-30}Show possible \"list\" commands.");
+            Console.WriteLine($"- {"status...",-30}");
+            Console.WriteLine($"  {"   ...set",-30}Show all tasks, and change status on chosen task.");
+            Console.WriteLine($"  {"   ...\"status\"",-30}Change status of specific task, (active, waiting or ready).");
+            Console.WriteLine($"  {"   ...\"status\" \"task name\"",-30}Change status of specific task, (active, waiting or ready).");
+            Console.WriteLine($"- {"new...", -30}Add new task to to-do list.");
+            Console.WriteLine($"  {"   ...\"task name\"",-30}Add new task to to-do list, and initialize with a task name");
+            Console.WriteLine($"- {"load",-30}Load to-do list from \"/todo.lis\".");
+            Console.WriteLine($"- {"save", -30}Save current to-do list to \"/todo.lis\".");
+            Console.WriteLine($"- {"quit", -30}Quit and save to-do list.");
             Console.WriteLine();
         }
         public static void AppRestart()
         {
             Process.Start("dtp15_todolist.exe");
             Process.GetCurrentProcess().Kill();
+        }
+        public static void UnknownCommand(string[] commandInput)
+        {
+            string commandString = "";
+            foreach (string command in commandInput) commandString += command + " ";
+            Console.WriteLine($"Unknown command: {commandString}");
         }
 
         public static void Main(string[] args)
@@ -118,13 +72,33 @@ namespace dtp15_todolist
                         else Todo.PrintTodoList(allTasks: false, verbose: false);
                     }
                 }
+                else if (MyIO.CheckFirstCommand(commandLines, "status"))
+                {
+                    if (MyIO.CheckAdditionalCommands(commandLines, "set")) Todo.ChangeTaskStatus();
+                    else if (MyIO.CheckAdditionalCommands(commandLines, "active"))
+                    {
+                        if (commandLines.Length > 2) Todo.ChangeTaskStatus(Todo.Active, commandLines[2]);
+                        else Todo.ChangeTaskStatus(Todo.Active);
+                    }
+                    else if (MyIO.CheckAdditionalCommands(commandLines, "waiting"))
+                    {
+                        if (commandLines.Length > 2) Todo.ChangeTaskStatus(Todo.Waiting, commandLines[2]);
+                        else Todo.ChangeTaskStatus(Todo.Waiting);
+                    }
+                    else if (MyIO.CheckAdditionalCommands(commandLines, "ready"))
+                    {
+                        if (commandLines.Length > 2) Todo.ChangeTaskStatus(Todo.Ready, commandLines[2]);
+                        else Todo.ChangeTaskStatus(Todo.Ready);
+                    }
+                    else UnknownCommand(commandLines);
+                }
                 else if (MyIO.CheckFirstCommand(commandLines, "new"))
                 {
                     if (commandLines.Length > 1 && commandLines[1] != "")
                     {
-                        AddNewTask(commandLines[1]);
+                        Todo.AddNewTask(commandLines[1]);
                     }
-                    else AddNewTask();
+                    else Todo.AddNewTask();
                 }
                 else if (MyIO.CheckFirstCommand(commandLines, "load"))
                 {
@@ -143,9 +117,7 @@ namespace dtp15_todolist
                 }
                 else
                 {
-                    string commandString = "";
-                    foreach (string command in commandLines) commandString += command + " ";
-                    Console.WriteLine($"Unknown command: {commandString}");
+                    UnknownCommand(commandLines);
                 }
             }
             while (true);
