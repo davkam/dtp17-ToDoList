@@ -254,6 +254,7 @@ namespace dtp15_todolist
         /// Takes a string argument (null by default), and adds a new class object to list.
         /// </summary>
         /// <param name="taskname">string (default = "").</param>
+            //NYI: Add max character restriction on taskName and taskDescription set. 
         public static void AddNewTask(string taskname = "")
         {
             ConsoleKeyInfo keyPressed;
@@ -292,7 +293,7 @@ namespace dtp15_todolist
                     TodoItem newTask = new TodoItem(taskLine);
                     todoList.Add(newTask);
 
-                    Console.WriteLine($". New task \"{newTaskName}\" successfully added to list!\r\n. To change task status, use command \"status\".");
+                    Console.WriteLine($". New task \"{newTaskName}\" successfully added to list!\r\n. To change task status, use command 'status'.\r\n. To save changes, use command 'save'.");
                 }
                 else if (keyPressed.Key == ConsoleKey.Backspace) goto setTask;
                 else if (keyPressed.Key == ConsoleKey.Escape)
@@ -345,7 +346,7 @@ namespace dtp15_todolist
                 }
                 else
                 {
-                    Console.WriteLine($". Unknown key: {keyPressed.Key}");
+                    Console.WriteLine($". Unknown Key: {keyPressed.Key}");
                     goto startClearAll;
                 }
             }
@@ -358,7 +359,7 @@ namespace dtp15_todolist
                 taskname = todoList[taskIndex].taskName;
                 todoList.RemoveAt(taskIndex);
                 
-                Console.WriteLine($". Task \"{taskname}\" was successfully deleted! To save changes use \"save\" command.");
+                Console.WriteLine($". Task \"{taskname}\" was successfully deleted! To save changes use 'save' command.");
 
                 Program.taskNameCommands = new string[todoList.Count];
                 AddTaskNamesToCommand();
@@ -375,7 +376,7 @@ namespace dtp15_todolist
                     Console.WriteLine($". ERROR! Index was out of range! Could not find \"{taskname}\" in list.");
                 }
 
-                Console.WriteLine($". Task \"{taskname}\" was successfully deleted! To save changes use \"save\" command.");
+                Console.WriteLine($". Task \"{taskname}\" was successfully deleted! To save changes use 'save' command.");
 
                 Program.taskNameCommands = new string[todoList.Count];
                 AddTaskNamesToCommand();
@@ -411,14 +412,14 @@ namespace dtp15_todolist
                 setStatus = AskTaskStatus(todoList[taskIndex].taskName);
 
             finalCheck:
-                Console.WriteLine($". Finalize status change for \"{todoList[taskIndex].taskName}\" to \"{StatusToString(setStatus)}\"?");
+                Console.WriteLine($". Accept status change for \"{todoList[taskIndex].taskName}\" to \"{StatusToString(setStatus)}\"?");
                 Console.WriteLine(". Press Enter to accept, Backspace to redo or Escape to quit changes.");
 
                 keyPressed = Console.ReadKey(true);
                 if (keyPressed.Key == ConsoleKey.Enter)
                 {
                     todoList[taskIndex].taskStatus = setStatus;
-                    Console.WriteLine($". Status of \"{todoList[taskIndex].taskName}\" was changed to \"{StatusToString(setStatus)}\"! To save changes use \"save\" command.");
+                    Console.WriteLine($". Status of \"{todoList[taskIndex].taskName}\" was changed to \"{StatusToString(setStatus)}\"! To save changes use 'save' command.");
                 }
                 else if (keyPressed.Key == ConsoleKey.Backspace)
                 {
@@ -451,7 +452,7 @@ namespace dtp15_todolist
                     if (keyPressed.Key == ConsoleKey.Enter)
                     {
                         todoList[taskIndex].taskStatus = setStatus;
-                        Console.WriteLine($". Status of \"{todoList[taskIndex].taskName}\" was changed to \"{StatusToString(setStatus)}\"! To save changes use \"save\" command.");
+                        Console.WriteLine($". Status of \"{todoList[taskIndex].taskName}\" was changed to \"{StatusToString(setStatus)}\"! To save changes use 'save' command.");
                     }
                     else if (keyPressed.Key == ConsoleKey.Escape)
                     {
@@ -502,7 +503,7 @@ namespace dtp15_todolist
             }
             else
             {
-                Console.WriteLine($". ERROR! \"{keyPressed.Key}\" not a valid option.");
+                Console.WriteLine($". Unknown Key: {keyPressed.Key}");
                 goto startSetStatus;
             }
             return returnInt;
