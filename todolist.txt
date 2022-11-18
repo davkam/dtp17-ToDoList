@@ -6,23 +6,24 @@
 	. Add unit-testing.
 
 -PROGRAM.cs:
-	. NYI: Create a new file of 'most-used' strings (eg. in PrintHelp and AppStartUp) to read from.
-	. NYI: Add option to show directory of all ".lis" files to load, save, or delete.
+	. NYI: Create a new file in dir of help command strings.
+	. NYI: Add option to show directory of all files to load, save, or delete.
 	. TBD: Add save, load to specific files function.
-	. TBD: Rework command input so it can register names within citation marks. (DONE)
+	. TBD: Rework command input so it can register words within citation marks. (DONE)
 	. TBD: Rework do-while loop with switch cases and elaborate MyIO-methods to better suit that.
 
 -TODO.cs:
-	. NYI: Add new method 'ListSorter' to sort objects in class according to 'taskStatus' and then 'taskPriority'.
+	. NYI: Add new method 'ListSorter' to sort objects in class according to status and then priority.
 	. NYI: Add new "FindTaskIndex" method for use in other methods.
-	. TBD: Make 'todoFileName' a public attribute for use in other methods.
-	. TBD: Rework 'ReadListFromFile' method so it can read lists from different .lis files.
-	. TBD: Rework 'SaveListToFile' method so it can write lists from different .lis files.
-	. NYI: Add error check to 'SaveListToFile' method with try-catch.
+	. TBD: Make filename string a public attribute for use in other methods.
+	. TBD: Rework 'ReadListFromFile' method so it can read lists from different files.
+	. TBD: Rework 'SaveListToFile' method so it can write lists from different files.
+	. NYI: Add an error-check to 'SaveListToFile' method with try-catch.
 	. TBD: Change variable name 'verbose' on print-methods for ease of understanding.
-	. TBD: Change string argument 'taskname' (for 'DeleteTask' and 'ChangeTaskStatus' methods) to an integer for 'taskindex' instead.
+	. TBD: Change string argument (for DeleteTask- and ChangeTaskStatus-methods) to an integer.
+	. NYI: Add max character restriction to AddNewTask-method. 
 
 -MYIO.cs:
-	. TBD: Rework method algorithms for improved user input features (eg. switch cases).
-	. TBD: Rework string split (for 'ReadCommand' method) so it does not split sentences inside citation marks. (DONE)
-	. NYI: Add an Error-Check to ReadCommand method. 
+	. TBD: Rework MyIO-methods with improved search algorithms to use with switch-cases.
+	. TBD: Rework ReadCommand-method so it does not split sentences inside citation marks. (DONE)
+	. NYI: Add an Error-Check to ReadCommand method. (DONE)
