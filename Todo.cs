@@ -63,7 +63,7 @@ namespace dtp15_todolist
 
                 Console.Write($"|{"#" + (i + 1) + ". " + taskName,-20}|{statusString,-12}|{taskPriority,-6}|");
                 if (verbose)
-                    Console.WriteLine($"{taskDescription,-40}|");
+                    Console.WriteLine($"{taskDescription,-60}|");
                 else
                     Console.WriteLine();
             }
@@ -103,7 +103,7 @@ namespace dtp15_todolist
         /// Checks file existence, reads from file and adds new class object to list. 
         /// If no file exists, file creates and app restarts.
         /// </summary>
-            // TBD: rework method so it can read list from different .lis files.
+            // TBD: rework method so it can read lists from different .lis files.
         public static void ReadListFromFile()
         {
             string todoFileName = "todo.lis";
@@ -142,7 +142,8 @@ namespace dtp15_todolist
         /// <b>SaveListToFile</b> method.
         /// Checks list count, and writes list to file in dir.
         /// </summary>
-            // TBD: rework method so it can write list to different .lis files.
+            // TBD: rework method so it can write lists to different .lis files.
+            // NYI: add error check with try-catch.
         public static void SaveListToFile()
         {
             string todoFileName = "todo.lis";
@@ -165,6 +166,13 @@ namespace dtp15_todolist
             else
             {
                 Console.WriteLine($". List could not be saved to \"/{todoFileName}\", list is empty!");
+                Console.WriteLine($". Press any key to restart application and create a new template.");
+                Console.ReadKey(true);
+
+                File.Delete(todoFileName);
+                File.Create(todoFileName);
+
+                Program.AppRestart();
             }
         }
 
@@ -183,12 +191,12 @@ namespace dtp15_todolist
             {
                 Console.Write($"|{"# NAME",-20}|{"STATUS",-12}|{"PRIO",-6}|");
 
-                if (verbose) Console.WriteLine($"{"DESCRIPTION",-40}|");
+                if (verbose) Console.WriteLine($"{"DESCRIPTION",-60}|");
                 else Console.WriteLine();
             }
             Console.Write("|--------------------|------------|------|");
 
-            if (verbose) Console.WriteLine("----------------------------------------|");
+            if (verbose) Console.WriteLine("------------------------------------------------------------|");
             else Console.WriteLine();
         }
 
@@ -269,7 +277,7 @@ namespace dtp15_todolist
             Console.Write(". Set task description: ");
             newTaskDescription = Console.ReadLine();
 
-            newTaskPriority = MyIO.SetIndex(". Set task priority level (1-4): ", 1, 4) + 1;
+            newTaskPriority = MyIO.SetIndex(". Set task priority level (1-4): ", 0, 3) + 1 ;        // REF: for potential SetIndex changes!
 
             Console.WriteLine($". Add new task?\r\n");
             Console.WriteLine($"- {"TASK:",-20}{newTaskName}\r\n- {"TASK DESCRIPTION:",-20}{newTaskDescription}\r\n- {"TASK PRIORITY:",-20}{newTaskPriority}\r\n- {"TASK STATUS:",-20}{StatusToString(newTaskStatus)} (Default)\r\n");
@@ -323,11 +331,13 @@ namespace dtp15_todolist
 
                 if (keyPressed.Key == ConsoleKey.Enter)
                 {
-                    File.Delete("todo.lis");
+                    todoList.Clear();
 
-                    Console.WriteLine(". To-Do list successfully cleared! To continue press any key to restart application.");
+                    Console.WriteLine(". To-Do list successfully cleared!");
+                    Console.WriteLine(". To continue, press any key to restart application and create a new template.");
                     Console.ReadKey(true);
 
+                    File.Delete("todo.lis");
                     File.Create("todo.lis");
                     Program.AppRestart();
                 }
@@ -345,7 +355,7 @@ namespace dtp15_todolist
             {
                 PrintTodoList(alltasks: true, verbose: false);
 
-                taskIndex = MyIO.SetIndex(". Which task would you like to delete?: #", 0, todoList.Count - 1);
+                taskIndex = MyIO.SetIndex(". Which task would you like to delete?: #", 0, todoList.Count - 1);      // REF: for potential SetIndex changes!
 
                 taskname = todoList[taskIndex].taskName;
                 todoList.RemoveAt(taskIndex);
@@ -399,7 +409,7 @@ namespace dtp15_todolist
                 PrintTodoList(alltasks: true, verbose: false);
 
             pickTask:
-                taskIndex = MyIO.SetIndex(". Which task would you like to change status on?: #", 0, todoList.Count - 1);
+                taskIndex = MyIO.SetIndex(". Which task would you like to change status on?: #", 0, todoList.Count - 1);        // REF: for potential SetIndex changes!
                 setStatus = AskTaskStatus(todoList[taskIndex].taskName);
 
             finalCheck:
