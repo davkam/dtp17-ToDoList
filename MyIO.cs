@@ -22,12 +22,32 @@ namespace dtp15_todolist
         /// </summary>
         /// <param name="commandPrompt">string.</param>
         /// <returns>string array (user commands).</returns>
-            // TBD: rework string split so it does not split sentences inside citation marks.
         static public string[] ReadCommand(string commandPrompt)
         {
             Console.Write(commandPrompt);
-            string[] commandLines = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            return commandLines;
+            string? commandString = Console.ReadLine();
+            string[] commandArray;
+
+            if (commandString.Contains('"'))
+            {
+                int firstIndex = commandString.IndexOf('"');
+                int lastIndex = commandString.LastIndexOf('"'); 
+                int indexDiff = lastIndex - firstIndex;
+                string newCommand1 = commandString.Substring(0, firstIndex - 1).Trim();
+                string newCommand2 = commandString.Substring(firstIndex + 1, indexDiff - 1).Trim();
+                string newCommand3 = commandString.Substring(lastIndex + 1).Trim();
+                if (newCommand3 != "")
+                {
+                    commandArray = new string[3] { newCommand1, newCommand2, newCommand3 };
+                }
+                else commandArray = new string[2] { newCommand1, newCommand2 };
+
+            }
+            else
+            {
+                commandArray = commandString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            }
+            return commandArray;
         }
 
         /// <summary>
