@@ -31,6 +31,8 @@
 		.Added welcome screen to start up.
 		.Reworked "status" commands.
 		.Added "delete" commands to program.
+		.Added documentation and commenting to Program class.
+		.Added "to-do" remarks.
 	-MyIO.cs:
 		.Reworked "ReadCommand" method to return string array.
 		.Reworked "Equals" method to "Contains" to look for specific string in array.
@@ -40,7 +42,7 @@
 		.Added "CheckCommandTaskName/Index" methods to improve function to "list" command.
 		.Added "SetIndex" command.
 		
-	-ToDo.cs:
+	-Todo.cs:
 		.Moved "PrintHelp" method to Program class.
 		.Reworked "ReadListFromFile" method, added file check and file creation.
 		.Added new "SaveListToFile" static method.
@@ -51,6 +53,8 @@
 		.Reworked "ChangeTaskStatus" & "AddNewTask" methods.
 		.Added "SetTaskStatus" method.
 		.Added "DeleteTask" method.
+		.Added documentation and commenting to Todo class.
+		.Added "to-do" remarks.
 
 -To-Do's.
 	-General:
