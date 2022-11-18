@@ -54,6 +54,13 @@ namespace dtp15_todolist
                 default: return "INCORRECT";
             }
         }
+        public static void AddTaskNamesToCommand()
+        {
+            for (int i = 0; i < todoList.Count; i++)
+            {
+                Program.taskNameCommands[i] = todoList[i].taskName.ToLower().Trim();
+            }
+        }
         public static void ReadListFromFile()
         {
             string todoFileName = "todo.lis";
@@ -70,7 +77,7 @@ namespace dtp15_todolist
                     numRead++;
                 }
                 sr.Close();
-                Console.WriteLine($". \"{numRead}\" tasks successfully loaded.\r\n");
+                Console.WriteLine($". \"{numRead}\" tasks successfully loaded.");
             }
             else
             {
@@ -116,11 +123,11 @@ namespace dtp15_todolist
             if (verbose) Console.WriteLine("----------------------------------------|");
             else Console.WriteLine();
         }
-        private static void PrintHead(bool verbose)
+        public static void PrintHead(bool verbose)
         {
             PrintHeadOrFoot(head: true, verbose);
         }
-        private static void PrintFoot(bool verbose)
+        public static void PrintFoot(bool verbose)
         {
             PrintHeadOrFoot(head: false, verbose);
         }
@@ -197,6 +204,8 @@ namespace dtp15_todolist
                 }
                 else goto finalTask;
             }
+            Program.taskNameCommands = new string[todoList.Count];
+            AddTaskNamesToCommand();
         taskDone:;
         }
         public static void ChangeTaskStatus(int status = 0, string name = "")
