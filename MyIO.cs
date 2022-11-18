@@ -43,7 +43,7 @@ namespace dtp15_todolist
             {
                 for (int y = 0; y < expectedCommand.Length; y++)
                 {
-                    if (actualCommand[x] == expectedCommand[y])
+                    if (actualCommand[x].ToLower() == expectedCommand[y])
                     {
                         returnBool = true;
                         break;
@@ -59,7 +59,7 @@ namespace dtp15_todolist
             {
                 for (int y = 0; y < expectedCommand.Length; y++)
                 {
-                    if (actualCommand[x] == expectedCommand[y])
+                    if (actualCommand[x].ToLower() == expectedCommand[y])
                     {
                         returnInt = y;
                         break;
