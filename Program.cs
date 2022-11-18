@@ -97,6 +97,7 @@ namespace dtp15_todolist
         public static void Main(string[] args)
         {
             // application starts here:
+
             AppStartUp();
             PrintHelp();
             string[] commandLines;
@@ -104,9 +105,9 @@ namespace dtp15_todolist
             do
             {
                     // do-while loop with conditional statements based on user input command:
+
                     // NYI: add option to show directory of all ".lis" files to load, save, or delete.
                     // TBD: add save, load to specific files function.
-                    // TBD: rework new "task name" command so it can register a task name within citation marks.
                     // TBD: rework do-while loop with switch cases and elaborate MyIO-methods to better suit that.
                 commandLines = MyIO.ReadCommand("> ");
                 if (MyIO.CheckFirstCommand(commandLines, "help") && commandLines.Length <= 1)
