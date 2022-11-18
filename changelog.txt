@@ -29,6 +29,7 @@
 		.Added "delete" commands to program.
 		.Added documentation and commenting to Program class.
 		.Added "to-do" remarks.
+		.Added new command functionality with the use of citation marks.
 
 	-MyIO.cs:
 		.Reworked "ReadCommand" method to return string array.
@@ -54,3 +55,4 @@
 		.Added "DeleteTask" method.
 		.Added documentation and commenting to Todo class.
 		.Added "to-do" remarks.
+		.Reworked "ReadCommand" method to identify citation marks.
